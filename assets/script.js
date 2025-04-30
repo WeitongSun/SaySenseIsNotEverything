@@ -21,4 +21,17 @@ $(document).ready(function() {
     },100);
     
     });
+
+    document.addEventListener('mousemove', (e) => {
+      const trace = document.createElement('div');
+      trace.classList.add('cursor-trace');
+      trace.style.left = `${e.clientX}px`;
+      trace.style.top = `${e.clientY}px`;
+      document.body.appendChild(trace);
+  
+      // Remove after animation
+      setTimeout(() => {
+        trace.remove();
+      }, 700); // Matches fadeOut duration
+    });
     
