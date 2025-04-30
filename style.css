@@ -132,3 +132,8 @@ float: left;
 
 }
 
+button:hover {
+  cursor: pointer;
+  font-style: italic;
+}
+
