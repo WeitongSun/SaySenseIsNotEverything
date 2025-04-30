@@ -1,2 +1,2 @@
-https://weitongsun.github.io/SaySenseIsNotEverything/ /ln
+https://weitongsun.github.io/SaySenseIsNotEverything/ ,
 https://sensenoteverything.zip/
