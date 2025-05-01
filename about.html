@@ -16,6 +16,9 @@
         display: flex;
         flex-direction: column;
         margin: 24px;
+
+        cursor: none;
+        overflow: hidden;
     }
 
     h1 {
@@ -159,6 +162,27 @@
     @media screen and (min-width: 721px) {
 
     }
+
+    /* Style for the trace element */
+.cursor-trace {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: rgba(169, 11, 11, 0.15);
+  /* Soft shadow dot */
+  border-radius: 50%;
+  pointer-events: none;
+  animation: fadeOut 0.7s forwards;
+  z-index: 9999;
+}
+
+/* Fading animation */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
 </style>
 
 <body>
@@ -295,6 +319,18 @@
                         synth.triggerAttackRelease(tones[index], '8n');
                     });
                 });
+            });
+            document.addEventListener('mousemove', (e) => {
+            const trace = document.createElement('div');
+            trace.classList.add('cursor-trace');
+            trace.style.left = `${e.clientX}px`;
+            trace.style.top = `${e.clientY}px`;
+            document.body.appendChild(trace);
+        
+            // Remove after animation
+            setTimeout(() => {
+                trace.remove();
+            }, 700); // Matches fadeOut duration
             });
 
         </script>
