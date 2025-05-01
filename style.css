@@ -107,11 +107,13 @@ body::-webkit-scrollbar {
   width: 7vw;
   height: 7vw;
   float: left;
-  position: relative;
+  /* position: relative; */
+  position: absolute;
   transition: 40s;
   border-radius: 50%;
   overflow: hidden;
   mix-blend-mode: lighten;
+  transition: left 0.3s ease, top 0.3s ease;
 
 }
 
