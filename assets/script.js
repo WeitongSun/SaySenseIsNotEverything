@@ -20,24 +20,64 @@ $(document).ready(function() {
     //     });
     // },100);
 
+    // function updatePositions() {
+    //   const winW = $(window).width();
+    //   const winH = $(window).height();
+    
+    //   $('.pcs').each(function() {
+    //     const $this = $(this);
+    
+    //     // 获取宽高（防止为0）
+    //     const boxW = $this.outerWidth() || 50;
+    //     const boxH = $this.outerHeight() || 50;
+    
+    //     const maxX = Math.max(0, winW - boxW);
+    //     const maxY = Math.max(0, winH - boxH);
+    
+    //     $this.css({
+    //       position: 'absolute',
+    //       top: Math.random() * maxY,
+    //       left: Math.random() * maxX
+    //     });
+    //   });
+    // }
     function updatePositions() {
       const winW = $(window).width();
       const winH = $(window).height();
     
+      const positions = [];
+    
       $('.pcs').each(function() {
         const $this = $(this);
-    
-        // 获取宽高（防止为0）
         const boxW = $this.outerWidth() || 50;
         const boxH = $this.outerHeight() || 50;
     
-        const maxX = Math.max(0, winW - boxW);
-        const maxY = Math.max(0, winH - boxH);
+        let newX, newY;
+        let safe = false;
+        let tries = 0;
+    
+        while (!safe && tries < 100) {
+          newX = Math.random() * (winW - boxW);
+          newY = Math.random() * (winH - boxH);
+          safe = true;
+    
+          // 检查和现有位置是否重叠
+          for (let pos of positions) {
+            if (Math.abs(newX - pos.x) < boxW && Math.abs(newY - pos.y) < boxH) {
+              safe = false;
+              break;
+            }
+          }
+    
+          tries++;
+        }
+    
+        positions.push({ x: newX, y: newY });
     
         $this.css({
           position: 'absolute',
-          top: Math.random() * maxY,
-          left: Math.random() * maxX
+          top: newY,
+          left: newX
         });
       });
     }
@@ -47,9 +87,6 @@ $(document).ready(function() {
       updatePositions();
       setInterval(updatePositions, 100);
     });
-    
-
-
     
     
     });
@@ -66,4 +103,6 @@ $(document).ready(function() {
         trace.remove();
       }, 700); // Matches fadeOut duration
     });
+
+
     
