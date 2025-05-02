@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Necto";
-  src: url("fonts/GenBkBasR.ttf");
+  font-family: "Myriad";
+  src: url("fonts/MYRIADPRO-REGULAR.OTF");
 }
 
 
@@ -27,7 +27,7 @@ a:active {
 
 html,
 body {
-  font-family: Necto, sans-serif;
+  font-family: Myriad, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
@@ -194,7 +194,7 @@ button:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2.5rem;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Myriad', serif;
   color: gray;
   animation: fadeInOut 3s ease-in-out infinite;
   z-index: 1000;
