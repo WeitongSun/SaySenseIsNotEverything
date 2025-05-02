@@ -1,0 +1,292 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fly By-Hwiy Chang</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+  @font-face {
+  font-family: "Myriad";
+  src: url("fonts/MYRIADPRO-REGULAR.OTF");
+}
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+        
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 10px;
+        max-width: 100vw;
+        height: 160px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    }
+
+    @media screen and (min-width: 721px) {
+
+    }
+
+    /* Style for the trace element */
+.cursor-trace {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: rgba(169, 11, 11, 0.15);
+  /* Soft shadow dot */
+  border-radius: 50%;
+  pointer-events: none;
+  animation: fadeOut 0.7s forwards;
+  z-index: 9999;
+}
+
+/* Fading animation */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <img src="assets/circle.png">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>Fly By</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+      
+In the morning,<br>
+Birds fly in circles<br>
+Making sounds I will never understand.<br>
+I cannot even see them<br>
+But I know they are there.<br>
+I sit somewhere beneath their circle and listen to them.<br>
+And I enjoy hearing them.<br>
+It’s not about knowing who they are;<br>
+It’s about understanding that they exist, they live, they fly.<br><br><br>
+<i>The rest of the writing is available only in the printed publication due to the political climate.</i>
+            <br><br>
+            <span class="note" style="color: #e4829d;">Hwiy Chang</span>
+            <br><br>
+            <span class="note" style="color: #e4829d;">HWIY is an interdisciplinary artist who primarily works with moving and still imagery. She is interested in investigating, exposing, and revealing connections between individuals and their environments. She often uses fictional narratives to create new meaning in the world and seeks to expand art as a medium for constructing alternative realities.
+            <br><br>@hwiy.art</span>
+            
+        </h3>
+        <script>
+            VanillaTilt.init(document.querySelector(".tilt-video"), {
+                max: 5,
+                speed: 200,
+                glare: true,
+                "max-glare": 4,
+            });
+
+            document.addEventListener('click', () => {
+                Tone.start();
+
+                // Array of tones or notes corresponding to each span
+                const tones = [
+                    'E3', // Meg Miller
+                    'G3', // Jalen Adams
+                    'F3', // Rasim Bayramov
+                    'D3', // Kai Chu Chuang
+                    'C3', // Molly Garrett
+                    'B3', // Tariye George-Phillips
+                    'F3', // Aya Khalife
+                    'G3', // Bradley Sinanan
+                    'A3', // Quinn Standley
+                    'D#3', // Weitong Sun
+                    'G3', // Taehee
+                    'F3', // Yuan Xin
+                    'C3',  // Yangyang Zhang
+                ];
+
+                const notes = document.querySelectorAll('.note');
+
+                notes.forEach((note, index) => {
+                    note.addEventListener('mouseenter', () => {
+                        const synth = new Tone.Synth().toDestination();
+                        synth.triggerAttackRelease(tones[index], '8n');
+                    });
+                });
+            });
+            document.addEventListener('mousemove', (e) => {
+            const trace = document.createElement('div');
+            trace.classList.add('cursor-trace');
+            trace.style.left = `${e.clientX}px`;
+            trace.style.top = `${e.clientY}px`;
+            document.body.appendChild(trace);
+        
+            // Remove after animation
+            setTimeout(() => {
+                trace.remove();
+            }, 700); // Matches fadeOut duration
+            });
+
+        </script>
+
+</body>
+
+</html>
