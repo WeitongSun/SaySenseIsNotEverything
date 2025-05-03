@@ -1,0 +1,298 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorna Williams-Lorna Williams</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+  @font-face {
+  font-family: "Myriad";
+  src: url("fonts/MYRIADPRO-REGULAR.OTF");
+}
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+        
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 10px;
+        max-width: 100vw;
+        height: 160px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    }
+
+    @media screen and (min-width: 721px) {
+
+    }
+
+    /* Style for the trace element */
+.cursor-trace {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: rgba(169, 11, 11, 0.15);
+  /* Soft shadow dot */
+  border-radius: 50%;
+  pointer-events: none;
+  animation: fadeOut 0.7s forwards;
+  z-index: 9999;
+}
+
+/* Fading animation */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p> 
+        </div>
+        <div class="img-container">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>Lorna Williams</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+        As the primary site of expression, the body is the tool and subject of my work.
+        <br><br>
+        I closely analyze and deconstruct human anatomy to speak to the reality that human-made materials mimic nature. These processes organically unfold through external support systems, timing, cause and effect. My works are intricately constructed with detritus from my life, including various hardware, bike parts, music instruments, ropes and chains. I also use natural materials such as raw wood, root systems, bird’s nest, insect hives, animal corpses, hair and snake shedding- of which has been collected over the course of travels, living, and circumstance. These materials unify the concept of what is created artificially and what manifests organically through natural processes. 
+
+        <br><br>
+        I closely analyze and deconstruct human anatomy to speak to the reality that human-made materials mimic nature. These processes organically unfold through external support systems, timing, cause and effect. My works are intricately constructed with detritus from my life, including various hardware, bike parts, music instruments, ropes and chains. I also use natural materials such as raw wood, root systems, bird’s nest, insect hives, animal corpses, hair and snake shedding- of which has been collected over the course of travels, living, and circumstance. These materials unify the concept of what is created artificially and what manifests organically through natural processes. 
+
+        <br><br>
+        My works represent rituals of rebirthing and initiation, of reevaluating, dismantling and rebuilding “self” through natural and man-made materials. Its focus is considering every perspective and then shedding—letting go in order to reinvent, redefine, rediscover and reintroduce. Distilling collected material into anthropomorphic forms, my sculptures address the cross-section of personal narrative, cultural heritage and a shared human condition. The material and figurative interconnectedness of my works creates an on-going mythology that speaks of life and death, birth and decay. My hope is that viewers will experience their own initiation ritual for the release and (re-) introduction of our shared anatomical foundations. 
+
+        <br><br>
+        My artistic practice is that of a person who is extremely sensitive; yet craves intensity. I am open to life, not afraid of my emotions and capable of making space for intellectual web points. It all unfolds before me and my challenge is to consider it all. I fixate-relate-choose. I do that with sound, color, texture, form/shape, material(s). From my perspective(s)’ stance with elements, drawn out like equations, haikus, melodies. I surrender, but with consciousness. I just let it happen and feel it all—from my gut—and then envision it. I see it from every perspective in order to grasp its potential and then question “how” —from that angle will the concepts come across. I am creating a mythology, making visual my way(s) of experiencing and gathering. I operate from other places within my body— spirit intellect. This brings me joy.
+
+        <br><br>
+        kinetics of decay<br>
+        cacti, copper nails, tree branches, various hardware, chains, wooden manikin arm<br>
+        2025<br><br>
+        I am seeking to create an immediate sensory and emotional bridge between the viewer and the materials used - that reinforce an imagined timeline of a slow death. Rather than move through some pre-programmed animation, this piece’s movements are constantly evolving in response to the changes of decay occurring overtime—evaporation of fluids within the cacti and environmental conditions will cause the weight of the cacti to lessen and yield the wooden arm to lower. In other words, not only is this sculpture far from static—it strives to use the process of eventual decay as a kinetic force. Every viewer has an individual experience and yet a shared physical narrative, where the decaying activity serves as the heartbeat of an experience that is happening right then and there, until completely shriveled. 
+
+        <br><br>
+        <img src="img/lorna.png" width="40%">
+        <br><br>
+        <br><br>
+
+
+
+
+            <span class="note" style="color: #e4829d;">Lorna Williams</span>
+            <br><br>
+    
+            
+        </h3>
+        <script>
+            document.addEventListener('click', () => {
+                Tone.start();
+
+                // Array of tones or notes corresponding to each span
+                const tones = [
+                    'E3', // Meg Miller
+                    'G3', // Jalen Adams
+                    'F3', // Rasim Bayramov
+                    'D3', // Kai Chu Chuang
+                    'C3', // Molly Garrett
+                    'B3', // Tariye George-Phillips
+                    'F3', // Aya Khalife
+                    'G3', // Bradley Sinanan
+                    'A3', // Quinn Standley
+                    'D#3', // Weitong Sun
+                    'G3', // Taehee
+                    'F3', // Yuan Xin
+                    'C3',  // Yangyang Zhang
+                ];
+
+                const notes = document.querySelectorAll('.note');
+
+                notes.forEach((note, index) => {
+                    note.addEventListener('mouseenter', () => {
+                        const synth = new Tone.Synth().toDestination();
+                        synth.triggerAttackRelease(tones[index], '8n');
+                    });
+                });
+            });
+            document.addEventListener('mousemove', (e) => {
+            const trace = document.createElement('div');
+            trace.classList.add('cursor-trace');
+            trace.style.left = `${e.clientX}px`;
+            trace.style.top = `${e.clientY}px`;
+            document.body.appendChild(trace);
+        
+            // Remove after animation
+            setTimeout(() => {
+                trace.remove();
+            }, 700); // Matches fadeOut duration
+            });
+
+        </script>
+
+</body>
+
+</html>
