@@ -9,10 +9,11 @@
     <link rel="icon" href="img/star.gif" type="image/gif" />
 </head>
 <style>
-  @font-face {
-  font-family: "Myriad";
-  src: url("fonts/MYRIADPRO-REGULAR.OTF");
-}
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
     body {
         background-color: #f1eed4;
         display: flex;
@@ -21,6 +22,10 @@
 
         cursor: none;
         /* overflow: hidden; */
+    }
+
+    .right {
+        text-align: right;
     }
 
 
@@ -89,14 +94,14 @@
         text-decoration: underline;
         color: #ff9129;
     }
+
     .img-container {
         position: fixed;
         top: 50%;
         right: 15%;
         transform: translateY(-50%);
         z-index: -1;
-        width: 100px;
-        height: 300px;
+
     }
 
     /* Egg rotation above the “about” element @Weitong*/
@@ -162,42 +167,64 @@
         }
 
         .tilt-video {
-        position: relative;
-        object-fit: cover;
-        border-radius: 5px;
-        background-size: cover;
-        margin-top: 10px;
-        max-width: 100vw;
-        height: 160px;
-        /* filter: drop-shadow(0 0 15px #ffdbba); */
-    }
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
 
     }
 
-    @media screen and (min-width: 721px) {
-
-    }
+    @media screen and (min-width: 721px) {}
 
     /* Style for the trace element */
-.cursor-trace {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  background: rgba(169, 11, 11, 0.15);
-  /* Soft shadow dot */
-  border-radius: 50%;
-  pointer-events: none;
-  animation: fadeOut 0.7s forwards;
-  z-index: 9999;
-}
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
 
-/* Fading animation */
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: scale(2);
-  }
-}
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #f28e25;
+    }
+
+    .number1,
+    .number2 {
+        color: #f26830;
+    }
+
+    .number1:hover,
+    .number2:hover {
+        cursor: pointer;
+    }
+
+    .footnote1:hover,
+    .footnote2:hover {
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -207,8 +234,9 @@
             <p>back to index</p>
         </div>
         <div class="img-container">
-            <img src="assets/sight 1.jpeg">
-            
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
         </div>
     </button>
 
@@ -219,31 +247,113 @@
     <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
 
     <h3>
-      
-        I was around friends, I think. Maybe family? I don’t remember. What I do remember is the overwhelming vibration-like sound that came next. It wasn’t loud on the ears, but it was loud on the body. I automatically knew what it was. I saw panic in everyone’s eyes around me, panic with a hint of resignation. And that’s when I woke up.
-        Even after I opened my eyes, I couldn’t tell if it was a dream. Even though nothing like that happens here. I’m safe. But I still wasn’t sure. I looked around and saw Rami was already up, getting ready. I asked if he had heard anything, just to be sure. He hadn’t. He glanced at me, concerned, and asked what was wrong. I told him about the dream—about the feeling that I wasn’t sure was a dream at all. About the way the sound wasn’t just heard but felt, about how it was lodged in my body even after waking up. He laughed. Don’t worry, babou, you’re in the US.
+
+        I was around friends, I think. Maybe family? I don’t remember. What I do remember is the overwhelming
+        vibration-like sound that came next. It wasn’t loud on the ears, but it was loud on the body. I automatically
+        knew what it was. I saw panic in everyone’s eyes around me, panic with a hint of resignation. And that’s when I
+        woke up.
+        <br><br>
+        Even after I opened my eyes, I couldn’t tell if it was a dream. Even though nothing like that happens here. I’m
+        safe. But I still wasn’t sure. I looked around and saw Rami was already up, getting ready. I asked if he had
+        heard anything, just to be sure. He hadn’t. He glanced at me, concerned, and asked what was wrong. I told him
+        about the dream—about the feeling that I wasn’t sure was a dream at all. About the way the sound wasn’t just
+        heard but felt, about how it was lodged in my body even after waking up. He laughed. <i>Don’t worry, babou,
+            you’re in the US.</i>
+        <br><br>
         His words should have reassured me, but they didn’t.
-        Since that dream, I haven’t been able to stop thinking about that loud-on-the-body feeling. It felt so familiar, yet it wasn’t. I wasn’t there when the war was happening a few months ago. I was here, safe. But still, I was sure I knew what I felt. My body knew.
-        I have heard sounds like that before. I was there on August 4, 2020. That was the loudest thing I had ever heard—loud enough to throw me from the balcony into the living room. But even that explosion, as deafening as it was, was over in an instant. A before, an after. Last summer, though, when I visited home, the sounds came in pieces. Sonic bombs (sound 1). At least a few times a week, I would hear them, and my mom would come running to my room to let me know it wasn’t an actual bomb. It’s just a sonic one, (sound 2) she would say. One you could only hear—in your ears and in your body. It didn’t hurt you. Not directly, at least.
-        I wonder what it means if a sound carries meaning before the mind can assign it one. If something can bypass thought entirely and communicate directly with the body. Is it still a sound at that point, or is it something else? A language of sensation rather than cognition. A sound that doesn’t need translation, because the body already understands. It makes me think about how animals react to danger before they consciously recognize it. How birds scatter before a storm, how a deer freezes at the snap of a branch, how a dog trembles before an earthquake. The body knows things before the mind does. Maybe it remembers things the mind is still trying to forget.
-        It’s strange how memory works, how it clings to you even when you’re far away, even when you think you’ve escaped it. How a sound—real or imagined—can bring everything rushing back. That’s what this felt like—like my body remembered something my mind didn’t. Maybe that’s one kind of memory: the kind that lives in muscle, in breath, in instinct. But I think there’s another kind, too—a memory that doesn’t come from direct experience but from inheritance. From being raised by people who’ve lived through wars. From hearing stories, or noticing what’s left unsaid. It’s like your body absorbs their fear, their caution, their reflexes. It’s strange to think that a memory might not need to be yours to feel true. That I could wake up from a dream shaped not only by what I lived, but by what I carry. Maybe that’s why, even in my sleep, even in a country where I should feel removed from it all, my body still remembers. Maybe memory doesn’t have to be first-hand to be real. Maybe it can be inherited, passed down like a story, like a habit. (visual 1)
-        I try to recall the last time I felt something similar. Not in a dream, but in real life. I think of the times I’ve been startled by a sudden sound—the slam of a heavy door, a thunderclap too close, a car speeding over a pothole with a force that shakes the ground. But none of them quite match the feeling I had in that dream. It wasn’t just shock or surprise. It was recognition. A certainty that I knew what that sound meant before I even had time to process it.
-        I don’t tell Rami that his reassurance didn’t help. That safety is a strange thing to measure when your body remembers things your mind doesn’t. I don’t tell him that I’ve started to notice it more—the way my heart races when I hear a siren in the distance, the way my body tenses at an unexpected noise before my brain can catch up, the way my hair changes color with every sound. I don’t tell him that I’ve begun to wonder if I will always feel this way. 
-        Instead, I get up. I move through the motions of the morning, trying to shake off the feeling. The coffee maker hums, filling the apartment with the scent of something warm and familiar. Outside, the street is quiet. A different kind of quiet than the one I’ve known before. Not the tense, waiting silence of a city holding its breath, but the unremarkable stillness of a morning like any other. I tell myself I should be grateful for it. 
-        I think about calling my mom, asking if she ever feels it too. If she ever wakes up unsure of where she is, if she’s ever had a moment where the past sneaks into the present through something as simple as a sound. But I don’t. I already know the answer. Instead, I take a deep breath. The sun has risen. The day has started. And for now, at least, it is quiet. (visual 2)<br>
-    <br>
-        
-            <span class="note" style="color: #be519e;">Aya Khalifeh</span>
-            <br><br>
-            <span class="note" style="color: #be519e;">Aya Khalifeh is a Lebanese designer and visual artist whose work explores the intersections of language, identity, and representation. She uses design to challenge dominant narratives and amplify underrepresented voices. Her practice blends traditional and digital methods to create critical visual experiences. She received her BFA in Graphic Design from the American University of Beirut and is currently finishing her MFA degree at Virginia Commonwealth University. 
-            </span>
+        <br><br>
+        Since that dream, I haven’t been able to stop thinking about that loud-on-the-body feeling. It felt so familiar,
+        yet it wasn’t. I wasn’t there when the war was happening a few months ago. I was here, safe. But still, I was
+        sure I knew what I felt. My body knew.
+        <br><br>
+        I have heard sounds like that before. I was there on August 4, 2020. That was the loudest thing I had ever
+        heard—loud enough to throw me from the balcony into the living room. But even that explosion, as deafening as it
+        was, was over in an instant. A before, an after. Last summer, though, when I visited home, the sounds came in
+        pieces. Sonic bombs <span class="sound1"><img src="img/sound.png" width="15px"></span>. At least a few times a
+        week, I would hear them, and my mom would come running to my room to let me know it wasn’t an actual bomb. It’s
+        just <i>a sonic one</i>, <span class="sound2"><img src="img/sound.png" width="15px"></span> she would say. One
+        you could only hear—in your ears and in your body. It didn’t hurt
+        you. Not directly, at least.
+        <br><br>
+        I wonder what it means if a sound carries meaning before the mind can assign it one. If something can bypass
+        thought entirely and communicate directly with the body. Is it still a sound at that point, or is it something
+        else? A language of sensation rather than cognition. A sound that doesn’t need translation, because the body
+        already understands. It makes me think about how animals react to danger before they consciously recognize it.
+        How birds scatter before a storm, how a deer freezes at the snap of a branch, how a dog trembles before an
+        earthquake. The body knows things before the mind does. Maybe it remembers things the mind is still trying to
+        forget.
+        <br><br>
+        It’s strange how memory works, how it clings to you even when you’re far away, even when you think you’ve
+        escaped it. How a sound—real or imagined—can bring everything rushing back. That’s what this felt like—like my
+        body remembered something my mind didn’t. Maybe that’s one kind of memory: the kind that lives in muscle, in
+        breath, in instinct. But I think there’s another kind, too—a memory that doesn’t come from direct experience but
+        from inheritance. From being raised by people who’ve lived through wars. From hearing stories, or noticing
+        what’s left unsaid. It’s like your body absorbs their fear, their caution, their reflexes. It’s strange to think
+        that a memory might not need to be yours to feel true. That I could wake up from a dream shaped not only by what
+        I lived, but by what I carry. Maybe that’s why, even in my sleep, even in a country where I should feel removed
+        from it all, my body still remembers. Maybe memory doesn’t have to be first-hand to be real. Maybe it can be
+        inherited, passed down like a story, like a habit. <span class="hover-image" data-img="img/aya_sight1.jpeg"><img src="img/sight.png" width="20px"></span>
+        <br><br>
+        I try to recall the last time I felt something similar. Not in a dream, but in real life. I think of the times
+        I’ve been startled by a sudden sound—the slam of a heavy door, a thunderclap too close, a car speeding over a
+        pothole with a force that shakes the ground. But none of them quite match the feeling I had in that dream. It
+        wasn’t just shock or surprise. It was recognition. A certainty that I knew what that sound meant before I even
+        had time to process it.
+        <br><br>
+        I don’t tell Rami that his reassurance didn’t help. That safety is a strange thing to measure when your body
+        remembers things your mind doesn’t. I don’t tell him that I’ve started to notice it more—the way my heart races
+        when I hear a siren in the distance, the way my body tenses at an unexpected noise before my brain can catch up,
+        the way my hair changes color with every sound. I don’t tell him that I’ve begun to wonder if I will always feel
+        this way.
+        <br><br>
+        Instead, I get up. I move through the motions of the morning, trying to shake off the feeling. The coffee maker
+        hums, filling the apartment with the scent of something warm and familiar. Outside, the street is quiet. A
+        different kind of quiet than the one I’ve known before. Not the tense, waiting silence of a city holding its
+        breath, but the unremarkable stillness of a morning like any other. I tell myself I should be grateful for it.
+        <br><br>
+        I think about calling my mom, asking if she ever feels it too. If she ever wakes up unsure of where she is, if
+        she’s ever had a moment where the past sneaks into the present through something as simple as a sound. But I
+        don’t. I already know the answer. Instead, I take a deep breath. The sun has risen. The day has started. And for
+        now, at least, it is quiet. <span class="hover-image" data-img="img/aya_sight2.JPG"><img src="img/sight.png" width="20px"></span>
+        <br><br>
+
+        <span class="note" style="color: #be519e;">Aya Khalifeh</span>
+        <br><br>
+        <span class="note" style="color: #be519e;">Aya Khalifeh is a Lebanese designer and visual artist whose work
+            explores the intersections of language, identity, and representation. She uses design to challenge dominant
+            narratives and amplify underrepresented voices. Her practice blends traditional and digital methods to
+            create critical visual experiences. She received her BFA in Graphic Design from the American University of
+            Beirut and is currently finishing her MFA degree at Virginia Commonwealth University.
+        </span>
+
+    </h3>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ======= SOUND1 (optional, safe check) =======
+            const sound1 = document.querySelector('.sound1');
+            const sound2 = document.querySelector('.sound2');
+
+            if (sound1) {
+                const player = new Tone.Player("sound/Aya_Sound1.mp3").toDestination();
+                sound1.addEventListener('mouseenter', () => {
+                    player.start();
+                });
+
+            }
             
-        </h3>
-        <script>
+
+            if (sound2) {
+                const player = new Tone.Player("sound/Aya_sound2.mp3").toDestination();
+                sound2.addEventListener('mouseenter', () => {
+                    player.start();
+                });
+
+            }
+
+            // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
             document.addEventListener('click', () => {
                 Tone.start();
 
-                // Array of tones or notes corresponding to each span
                 const tones = [
                     'E3', // Meg Miller
                     'G3', // Jalen Adams
@@ -269,20 +379,44 @@
                     });
                 });
             });
+
+            // ======= CURSOR TRACE =======
             document.addEventListener('mousemove', (e) => {
-            const trace = document.createElement('div');
-            trace.classList.add('cursor-trace');
-            trace.style.left = `${e.clientX}px`;
-            trace.style.top = `${e.clientY}px`;
-            document.body.appendChild(trace);
-        
-            // Remove after animation
-            setTimeout(() => {
-                trace.remove();
-            }, 700); // Matches fadeOut duration
+                const trace = document.createElement('div');
+                trace.classList.add('cursor-trace');
+                trace.style.left = `${e.clientX}px`;
+                trace.style.top = `${e.clientY}px`;
+                document.body.appendChild(trace);
+
+                setTimeout(() => {
+                    trace.remove();
+                }, 700);
             });
 
-        </script>
+            // ======= HOVER IMAGE PREVIEW =======
+            const hoverImages = document.querySelectorAll('.hover-image');
+            const hoverPreview = document.getElementById('hoverPreview');
+
+            hoverImages.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    hoverPreview.src = item.getAttribute('data-img');
+                    hoverPreview.style.display = 'block';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    hoverPreview.style.display = 'none';
+                });
+            });
+
+            // ======= FOOTNOTE SCROLL =======
+            window.scrollToElement = function (selector) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                }
+            };
+        });
+    </script>
 
 </body>
 
