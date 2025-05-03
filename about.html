@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sense-to-sense Translation</title>
+    <title>Sense-to-sense Translation-Meg Miller</title>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
     <link rel="icon" href="img/star.gif" type="image/gif" />
 </head>
 <style>
-  @font-face {
-  font-family: "Myriad";
-  src: url("fonts/MYRIADPRO-REGULAR.OTF");
-}
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
     body {
         background-color: #f1eed4;
         display: flex;
@@ -22,6 +23,11 @@
         cursor: none;
         /* overflow: hidden; */
     }
+
+    .right {
+        text-align: right;
+    }
+
 
     h1 {
         width: 90%;
@@ -89,6 +95,15 @@
         color: #ff9129;
     }
 
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+    }
+
     /* Egg rotation above the “about” element @Weitong*/
     .back_btn img {
         width: 55px;
@@ -152,42 +167,64 @@
         }
 
         .tilt-video {
-        position: relative;
-        object-fit: cover;
-        border-radius: 5px;
-        background-size: cover;
-        margin-top: 10px;
-        max-width: 100vw;
-        height: 160px;
-        /* filter: drop-shadow(0 0 15px #ffdbba); */
-    }
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
 
     }
 
-    @media screen and (min-width: 721px) {
-
-    }
+    @media screen and (min-width: 721px) {}
 
     /* Style for the trace element */
-.cursor-trace {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  background: rgba(169, 11, 11, 0.15);
-  /* Soft shadow dot */
-  border-radius: 50%;
-  pointer-events: none;
-  animation: fadeOut 0.7s forwards;
-  z-index: 9999;
-}
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
 
-/* Fading animation */
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    transform: scale(2);
-  }
-}
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #9a82e4;
+    }
+
+    .number1,
+    .number2 {
+        color: #f26830;
+    }
+
+    .number1:hover,
+    .number2:hover {
+        cursor: pointer;
+    }
+
+    .footnote1:hover,
+    .footnote2:hover {
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -195,6 +232,11 @@
         <div class="menu" style="text-decoration: underline;">
             <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
             <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
         </div>
     </button>
 
@@ -205,101 +247,142 @@
     <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
 
     <h3>
-        Dear reader, 
+        Dear reader,
         <br><br>
 
-        This publication arose from the seminar “Sense-to-sense Translation,” taught in Spring 2025 at Virginia Commonwealth University. “Sense-to-sense” was a graduate-level seminar in the graphic design department, though it was open to all MFA students in VCU’s School of the Arts. It was a writing seminar for artists, but more specifically it was a seminar on translation and the senses, on translating from the perceptual — from the “non-verbal” (Ursula Le Guin) — to the linguistic. From scent or sound or art into language. From feeling, thought, and sensation into words. 
+        This publication arose from the seminar “Sense-to-sense Translation,” taught in Spring 2025 at Virginia
+        Commonwealth University. “Sense-to-sense” was a graduate-level seminar in the graphic design department, though
+        it was open to all MFA students in VCU’s School of the Arts. It was a writing seminar for artists, but more
+        specifically it was a seminar on translation and the senses, on translating from the perceptual — from the
+        “non-verbal” (Ursula Le Guin) — to the linguistic. From scent or sound or art into language. From feeling,
+        thought, and sensation into words.
         <br><br>
-        It was a seminar, at first, about making things legible. But about halfway through, things started to turn. When we got back from spring break, we read poet and translator Anne Carson’s “Variations on the Right to Remain Silent,” where she writes, 
-            <br><br>
-            <center><i>Every translator knows the point where one language cannot be rendered into another.</i></center>
+        It was a seminar, at first, about making things legible. But about halfway through, things started to turn. When
+        we got back from spring break, we read poet and translator Anne Carson’s “Variations on the Right to Remain
+        Silent,” where she writes,
+        <br><br>
+        <center><i>Every translator knows the point where one language cannot be rendered into another.</i></center>
 
-            <br><br>
-            Carson pulls out the word cliché to illustrate this, a word with no English translation. In French, cliché is the past participle of the verb clicher, a term that originally comes from the printing industry. Its literal translation is “to make a stereotype from a relief printing surface.” That the word is something of an onomatopoeia — mimicking the sound of the printer’s die striking the metal — is also part of what makes it, per Carson, untranslatable. 
+        <br><br>
+        Carson pulls out the word cliché to illustrate this, a word with no English translation. In French, cliché is
+        the past participle of the verb clicher, a term that originally comes from the printing industry. Its literal
+        translation is “to make a stereotype from a relief printing surface.” That the word is something of an
+        onomatopoeia — mimicking the sound of the printer’s die striking the metal — is also part of what makes it, per
+        Carson, untranslatable.
 
-            <br><br>
-            <center><i>English has different sounds.</i></center>
-            <br><br>
-            She writes,
+        <br><br>
+        <center><i>English has different sounds.</i></center>
+        <br><br>
+        She writes,
 
-            <br><br>
-            <center><i>English falls silent. </i></center>
+        <br><br>
+        <center><i>English falls silent. </i></center>
 
-            <br><br>
-            After we read this, I showed the class my friend Juliana Castro’s Are.na channel called Feelings english doesn’t have. 
+        <br><br>
+        After we read this, I showed the class my friend Juliana Castro’s Are.na channel called <a href="https://www.are.na/juliana-castro/feelings-english-doesn-t-have">Feelings english doesn’t have</a>. <img src="img/sound.png" width="15px"></span>
 
-            <br><br>
-            … Like the German Zweisamkeit, or in English: the intimacy shared between two people, which indicates a kind of loneliness around the pair due to their special bond. 
+        <br><br>
+        … Like the German Zweisamkeit, or in English: the intimacy shared between two people, which indicates a kind of
+        loneliness around the pair due to their special bond.
 
-            <br><br>
-            … Or the Korean word 어이없다, which translates literally to “without a why” and describes a situation that has no reason, or that is so absurd that it leaves you dumbfounded.
-            <br><br>
-            Or the famously untranslatable Portuguese word saudade, which others define as a kind longing like nostalgia or melancholia, but Valeria Luiselli describes as the “presence of an absence.” 
+        <br><br>
+        … Or the Korean word 어이없다, which translates literally to “without a why” and describes a situation that has no
+        reason, or that is so absurd that it leaves you dumbfounded.
+        <br><br>
+        Or the famously untranslatable Portuguese word saudade, which others define as a kind longing like nostalgia or
+        melancholia, but Valeria Luiselli describes as the “presence of an absence.” <span class="hover-image" data-img="img/Meg_sight1.png"><img src="img/sight.png" width="20px"> (Sight)</span>
 
-            <br><br>
-            In her book Sidewalks, Luiselli has a whole essay on this word, which she wrote in Spanish, and I read in English.  
+        <br><br>
+        In her book Sidewalks, Luiselli has a whole essay on this word, which she wrote in Spanish, and I read in
+        English.
 
-            <br><br>
-            In an interview, Luiselli said, 
-            <br><br>
-            <center><i>Saudade and other untranslatable words somehow correspond to the idea of a relingo [a Spanish word meaning patch or gap]—they’re gaps in the ideas that you’re trying to form. They are generative because you have to circle around them, and in doing so, you find much more.</i></center>
+        <br><br>
+        In an interview, Luiselli said,
+        <br><br>
+        <center><i>Saudade and other untranslatable words somehow correspond to the idea of a relingo [a Spanish word
+                meaning patch or gap]—they’re gaps in the ideas that you’re trying to form. They are generative because
+                you have to circle around them, and in doing so, you find much more.</i></center>
 
-            <br><br>
-            So we started thinking about the kind of writing that starts with a lack, with an absence. That comes out of, and revolves around, a silence. There is something almost magnetic about the untranslatable. We are drawn into its gaps and silences like the gravitational pull of a black hole.
+        <br><br>
+        So we started thinking about the kind of writing that starts with a lack, with an absence. That comes out of,
+        and revolves around, a silence. There is something almost magnetic about the untranslatable. We are drawn into
+        its gaps and silences like the gravitational pull of a black hole.
 
-            <br><br>
-            For Pope L., the attempt at description is always accompanied by loss. He said, 
-            <br><br>
-            <center><i>When creating a description we must always re-inscribe against that loss. The back and forth is unavoidable. It’s the deal we make with language. </i></center>
+        <br><br>
+        For Pope L., the attempt at description is always accompanied by loss. He said,
+        <br><br>
+        <center><i>When creating a description we must always re-inscribe against that loss. The back and forth is
+                unavoidable. It’s the deal we make with language. </i></center>
 
-            <br><br>
-            Early in the semester, we decided to attempt to write from images and sound and scent, and we knew that just as something would be gained, something else would be lost in translation. We made a deal with language. Our agreement was unspoken, but it was an agreement all the same. 
-            <br><br>
-            We accepted that language can only approximate meaning, and we decided to embrace that ambiguity. But we still thought that attempting to convey meaning — how we see things, what we feel, how things truly are — was a worthy pursuit.  
-            <br><br>
-            It’s the deal we make with language. 
-            <br><br>
-            For the latter half of the semester, we started to ask ourselves, what happens when language doesn’t hold up its end of the deal?
-            <br><br>
-            What happens when language fails us, or stops itself or stutters? Is scarred or silenced or broken with grief. How can we write into a space of uncertainty or unknowing? What do we do with the untranslatable?
-            <br><br>
-            The following essays are our attempts to answer these questions. They are pieces about sound that only a body remembers; the porousness of memory; accents that are unplaceable. They are about family and lineage, lost time. They are about the language of machines, and what might happen (in, say, a dystopian future) if all communication was scripted by technology. They are each really moving in their own way, they say a lot with a little, and they are beautiful examples of how circling around the thing can bring us closer to the essence and the truth of the experience than saying it directly. 
-            <br><br>
-            With that, I’ll be quiet and let you get reading, 
-            <br><br>
-            <span class="note" style="color: #9a82e4;">Meg Miller</span>
-            <br><br>
-            <br><br>
+        <br><br>
+        Early in the semester, we decided to attempt to write from images and sound and scent, and we knew that just as
+        something would be gained, something else would be lost in translation. We made a deal with language. Our
+        agreement was unspoken, but it was an agreement all the same.
+        <br><br>
+        We accepted that language can only approximate meaning, and we decided to embrace that ambiguity. But we still
+        thought that attempting to convey meaning — how we see things, what we feel, how things truly are — was a worthy
+        pursuit.
+        <br><br>
+        It’s the deal we make with language.
+        <br><br>
+        For the latter half of the semester, we started to ask ourselves, what happens when language doesn’t hold up its
+        end of the deal?
+        <br><br>
+        What happens when language fails us, or stops itself or stutters? Is scarred or silenced or broken with grief.
+        How can we write into a space of uncertainty or unknowing? What do we do with the untranslatable?
+        <br><br>
+        The following essays are our attempts to answer these questions. They are pieces about sound that only a body
+        remembers; the porousness of memory; accents that are unplaceable. They are about family and lineage, lost time.
+        They are about the language of machines, and what might happen (in, say, a dystopian future) if all
+        communication was scripted by technology. They are each really moving in their own way, they say a lot with a
+        little, and they are beautiful examples of how circling around the thing can bring us closer to the essence and
+        the truth of the experience than saying it directly.
+        <br><br>
+        With that, I’ll be quiet and let you get reading,
+        <br><br>
+        <span class="note" style="color: #9a82e4;">Meg Miller</span>
+        <br><br>
+        <span class="note" style="color: #9a82e4;">Meg Miller is a writer and editor living in Richmond, Virginia who has contributed writing to the New York Times, Frieze, BOMB, Los Angeles Review of Books, The Atlantic, and other web and print publications, mostly about the ways design, art, language, and technology shape culture and society. She’s editorial director at Are.na and teaches at Virginia Commonwealth University.
 
-            <span style="font-weight: 700;">Sense is Not Everything</span> was authored, edited, and designed by the
-            participants of this seminar:
-            <span class="note" style="color: #76c155;">Rasim Bayramov</span>,
-            <span class="note" style="color: #e4829d;">Hwiy Chang</span>,
-            <span class="note" style="color: #d8e038;">Molly Garrett</span> ,
-            <span class="note" style="color: #f26830;">Tariye George-Phillips</span>,
-            <span class="note" style="color: #be519e;">Aya Khalifeh</span>,
-            <span class="note" style="color: #f28e25;">Diego Pablo Màlaga</span>,
-            <span class="note" style="color: #a2ce4f;">Nneoma Njoku</span>,
-            <span class="note" style="color: #f89b64;">Tyna Ontko</span>,
-            <span class="note" style="color: #f2d723;">Irene Piazza</span>,
-            <span class="note" style="color: #de658a;">Quinn Standley</span>,
-            <span class="note" style="color: #f15f26;">Weitong “ShanMu” Sun</span>,
-            <span class="note" style="color: #de658a;">Lorna Williams</span>, and
-            <span class="note" style="color: #f2b125;">Wren Tiffany</span>.
+            <br><br></span>
+        <br><br>
 
-        </h3>
-        <script>
-            VanillaTilt.init(document.querySelector(".tilt-video"), {
-                max: 5,
-                speed: 200,
-                glare: true,
-                "max-glare": 4,
-            });
+        <span style="font-weight: 700;">Sense is Not Everything</span> was authored, edited, and designed by the
+        participants of this seminar:
+        <span class="note" style="color: #76c155;">Rasim Bayramov</span>,
+        <span class="note" style="color: #e4829d;">Hwiy Chang</span>,
+        <span class="note" style="color: #d8e038;">Molly Garrett</span> ,
+        <span class="note" style="color: #f26830;">Tariye George-Phillips</span>,
+        <span class="note" style="color: #be519e;">Aya Khalifeh</span>,
+        <span class="note" style="color: #f28e25;">Diego Pablo Màlaga</span>,
+        <span class="note" style="color: #a2ce4f;">Nneoma Njoku</span>,
+        <span class="note" style="color: #f89b64;">Tyna Ontko</span>,
+        <span class="note" style="color: #f2d723;">Irene Piazza</span>,
+        <span class="note" style="color: #de658a;">Quinn Standley</span>,
+        <span class="note" style="color: #f15f26;">Weitong “ShanMu” Sun</span>,
+        <span class="note" style="color: #de658a;">Lorna Williams</span>, and
+        <span class="note" style="color: #f2b125;">Wren Tiffany</span>.
 
+        <br><br>
+        <span class="note" style="color: #908f8f;">Website designed and coded by Weitong "ShanMu" Sun and Tariye George-Phillips.</span>
+
+    </h3>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ======= SOUND1 (optional, safe check) =======
+            const sound1 = document.querySelector('.sound1');
+
+            if (sound1) {
+                const player = new Tone.Player("sound/diegopablo_sound.m4a").toDestination();
+                sound1.addEventListener('mouseenter', () => {
+                    player.start();
+                });
+            }
+
+            // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
             document.addEventListener('click', () => {
                 Tone.start();
 
-                // Array of tones or notes corresponding to each span
                 const tones = [
                     'E3', // Meg Miller
                     'G3', // Jalen Adams
@@ -325,20 +408,44 @@
                     });
                 });
             });
+
+            // ======= CURSOR TRACE =======
             document.addEventListener('mousemove', (e) => {
-            const trace = document.createElement('div');
-            trace.classList.add('cursor-trace');
-            trace.style.left = `${e.clientX}px`;
-            trace.style.top = `${e.clientY}px`;
-            document.body.appendChild(trace);
-        
-            // Remove after animation
-            setTimeout(() => {
-                trace.remove();
-            }, 700); // Matches fadeOut duration
+                const trace = document.createElement('div');
+                trace.classList.add('cursor-trace');
+                trace.style.left = `${e.clientX}px`;
+                trace.style.top = `${e.clientY}px`;
+                document.body.appendChild(trace);
+
+                setTimeout(() => {
+                    trace.remove();
+                }, 700);
             });
 
-        </script>
+            // ======= HOVER IMAGE PREVIEW =======
+            const hoverImages = document.querySelectorAll('.hover-image');
+            const hoverPreview = document.getElementById('hoverPreview');
+
+            hoverImages.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    hoverPreview.src = item.getAttribute('data-img');
+                    hoverPreview.style.display = 'block';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    hoverPreview.style.display = 'none';
+                });
+            });
+
+            // ======= FOOTNOTE SCROLL =======
+            window.scrollToElement = function (selector) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                }
+            };
+        });
+    </script>
 </body>
 
 </html>

@@ -287,7 +287,7 @@
             const sound1 = document.querySelector('.sound1');
 
             if (sound1) {
-                const player = new Tone.Player("sound/Nneoma_Hearing.mp4").toDestination();
+                const player = new Tone.Player("sound/Nneoma_Hearing.mp3").toDestination();
                 sound1.addEventListener('mouseenter', () => {
                     player.start();
                 });
