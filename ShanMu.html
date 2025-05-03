@@ -1,0 +1,433 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking Across Emptiness: On Translation, Self, and Silence
+        -Weitong “ShanMu” Sun</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
+
+    }
+
+    @media screen and (min-width: 721px) {}
+
+    /* Style for the trace element */
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
+
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #f28e25;
+    }
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>Speaking Across Emptiness: On Translation, Self, and Silence</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+        Even after being here for years, I still feel like I’m pretending to be someone else when I speak English.
+        <br><br>
+
+        English has an urge to explain everything without leaving room for ambiguity. Chinese, on the other hand, tends
+        to hide meaning within words. Chinese writers enjoy playing word games with their readers. For example, in
+        <i>Journey to the West</i>, the main character is Wukong, the Monkey King. But if you look at the name character
+        by
+        character, “Wu” means <i>try to understand</i> and “Kong” means <i>emptiness</i> (a concept in Daoism). Later, I
+        come to
+        realize that Wukong’s journey is actually a journey to “wu kong” — to understand emptiness. A similar wordplay
+        appears in <i>Dream of the Red Chamber</i>, whose main character is named Baoyu (宝玉), meaning “precious jade.”
+        At
+        birth, Baoyu is found with a piece of magical jade in his mouth—this jade becomes both a literal object and a
+        symbolic anchor of the story. The name "Baoyu" hides layered meanings: on one level, it signals his unique and
+        privileged status; on another, it foreshadows his entrapment in material desire and illusion. Just as Wukong
+        must transcend his name to achieve enlightenment, Baoyu must lose his jade—his “preciousness”—to awaken from the
+        grand illusion of worldly life. Even the novel’s alternate title, The Story of the Stone, hints at this: the
+        stone or jade is both central and deceptive, a metaphor for something that seems solid but is ultimately empty.
+
+        <br><br>
+        These stories, when read for the first time, seem like fantastical tales—one about retrieving sacred texts from
+        the West, another a record of the lavish Grand View Garden. But upon rereading, or only after a long time, you
+        slowly begin to grasp the truths that are never directly stated. I love these kinds of stories. They exist in
+        English translations too—take <i>The Little Prince</i>, for instance. It uses fairy tale-like language to
+        express
+        universal truths. But the language it uses is more direct.
+        <br><br>
+        When I first came to the U.S., around the age of twenty, I found myself mirroring the world around
+        me—expressions, glances, even the flicker of someone’s hand. Perhaps it was echopraxia, or perhaps just a quiet
+        hunger to belong. With the wide-eyed curiosity of a child, I tried to catch meaning in the air, tracing sound
+        with gesture, shadowing language I did not yet know. Communicating with my roommate required drawings, gestures,
+        and extremely basic vocabulary. I would laugh at jokes I didn’t even understand, avoid explaining things to
+        escape the struggle of gesturing wildly, nod at things I didn’t comprehend, and ask a thousand questions, a
+        thousand times. In those moments, I would suddenly feel detached, feeling extremely unfamiliar with the
+        English-speaking version of myself. Who are you? And who am I?
+        <br><br>
+        Before this multilingual experience, I believed that emotions and sensitivity were innate and universally
+        shared. But I later realized this wasn’t entirely true.
+
+        <br><br>
+        There is no equivalent of the word “缘分” (<i>yuanfen</i>) in English. It’s often translated as “fate,” but “fate”
+        is a
+        different concept. I can’t quite explain to you the subtle feeling of yuanfen. Every event and encounter in your
+        life might be because of yuanfen. It sounds like fate, but Chinese people believe in yuan, not in ming (fate).
+        In Chinese culture, fate is something that can be challenged and changed—even an ordinary person can defy the
+        heavens and change their destiny. But <i>yuanfen</i> is predestined.
+
+
+        <br><br>
+        Just like I may never understand why January isn’t simply called “the first month,” or why “break a leg” became
+        a form of well-wishing—it still sounds like a curse to me, no matter what.
+
+        <br><br>
+        Language fails me—not just in translation, but in becoming a kind of cultural shackle. Hidden within language
+        are layers of culture and subconscious suggestion. To better translate English’s gender distinctions of “he,”
+        “she,” and “it,” Chinese in the early 20th century introduced the characters 他 (he), 她 (she), and 它 (it). Before
+        that, Chinese didn’t mark gender in pronouns—“he” and “she” were both written as 他 and understood through
+        context. People were described by their roles, relationships, or actions rather than by gendered categories. The
+        language allowed for fluidity, a kind of ambiguity that reflected a different way of seeing identity.
+        <br><br>
+        In trying to accommodate English, Chinese adopted this gendered system. But this shift also imported a way of
+        thinking: one that requires categorizing people by gender even when it's irrelevant. Similarly, in the late 19th
+        century, phrases like “lose face” and “save face” entered English, borrowed from Chinese face culture.
+        <br><br>
+        These small borrowings add up, shaping how we think and speak. And now, I find myself caught in a crevice
+        between English and Chinese. I want so much to describe how I feel, and yet, once again, language fails me. In
+        English, I stumble over rigid pronouns and categorical grammar. In Chinese, I grieve the subtle forms of
+        expression that are being lost—ways of describing people without locking them into gendered roles. Language
+        fails me not only in its structure, but in how it frames the self.
+        <br><br>
+        In 2018, I wrote in my notes:
+        <br><br>
+        <p style="text-indent: 2em;">
+            Maybe, just maybe, from the moment we’re born, <br></p>
+            <p style="text-indent: 2em;">
+            we are stripped of the right to think freely. <br></p>
+            <p style="text-indent: 2em;">
+            Eternal, unchanging ideas—they don’t exist.<br></p>
+            <p style="text-indent: 2em;">
+            Beliefs that once seemed so normal and firm—<br></p>
+            <p style="text-indent: 2em;">
+            Now, in another culture, I find they were never truly there.<br></p>
+            <p style="text-indent: 2em;">
+            Maybe everything is just... nothingness.<br></p>
+            <p style="text-indent: 2em;">
+            And what of this so-called self, the individual—does that even exist?<br>
+        </p>
+        <span class="hover-image" data-img="img/asset.jpg"><img src="img/sight.png" width="20px"> (Sight)</span>
+        <br><br>
+        Eastern philosophy says: all things are empty. I don’t know whether I’ve become enlightened or lost in delusion.
+        It reminds me of Dream of the Red Chamber—a grand dream, all things returning to emptiness. It feels a bit
+        melancholic. It makes me think of Journey to the West—maybe going through this untranslatable, multilingual
+        journey is a kind of spiritual trial that brings true awareness of self. And I also think of The Little
+        Prince—perhaps if I feel with my heart, I can break through the limits of language.
+        <br><br>
+        Maybe when language fails me, all things return to emptiness—not as a loss, but as a release.
+        <br><br>
+        And in that release, a self untouched by cultural framing, by grammar and gender, might finally begin to take
+        shape.
+        <br><br>
+        <br><br>
+
+        <span class="note" style="color: #f15f26;">Weitong “ShanMu” Sun</span>
+        <br><br>
+        <span class="note" style="color: #f15f26;">Weitong “ShanMu” Sun (born in Jinan, China) is an experimental artist
+            who explores live simulation, digital storytelling, artificial intelligence, and the methodology of
+            programming languages. Her practice explores the complexity of emerging technology and computation as an
+            alternative narrative container. Her work has been exhibited internationally at venues such as Black Brick
+            Project (NYC, US), Instinc (Singapore), Rubicon (Australia), ICAVCU (Richmond, VA), and others. She is
+            pursuing an MFA in Kinetic Imaging from Virginia Commonwealth University School of Arts and holds a BS in
+            computer science with minors in Mathematics and Arts from the University of Delaware. She taught Creative
+            Code & Electronics at VCUarts Kinetic Imaging.
+
+            <br><br></span>
+
+    </h3>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ======= SOUND1 (optional, safe check) =======
+            const sound1 = document.querySelector('.sound1');
+
+            if (sound1) {
+                const player = new Tone.Player("sound/diegopablo_sound.m4a").toDestination();
+                sound1.addEventListener('mouseenter', () => {
+                    player.start();
+                });
+            }
+
+            // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
+            document.addEventListener('click', () => {
+                Tone.start();
+
+                const tones = [
+                    'E3', // Meg Miller
+                    'G3', // Jalen Adams
+                    'F3', // Rasim Bayramov
+                    'D3', // Kai Chu Chuang
+                    'C3', // Molly Garrett
+                    'B3', // Tariye George-Phillips
+                    'F3', // Aya Khalife
+                    'G3', // Bradley Sinanan
+                    'A3', // Quinn Standley
+                    'D#3', // Weitong Sun
+                    'G3', // Taehee
+                    'F3', // Yuan Xin
+                    'C3',  // Yangyang Zhang
+                ];
+
+                const notes = document.querySelectorAll('.note');
+
+                notes.forEach((note, index) => {
+                    note.addEventListener('mouseenter', () => {
+                        const synth = new Tone.Synth().toDestination();
+                        synth.triggerAttackRelease(tones[index], '8n');
+                    });
+                });
+            });
+
+            // ======= CURSOR TRACE =======
+            document.addEventListener('mousemove', (e) => {
+                const trace = document.createElement('div');
+                trace.classList.add('cursor-trace');
+                trace.style.left = `${e.clientX}px`;
+                trace.style.top = `${e.clientY}px`;
+                document.body.appendChild(trace);
+
+                setTimeout(() => {
+                    trace.remove();
+                }, 700);
+            });
+
+            // ======= HOVER IMAGE PREVIEW =======
+            const hoverImages = document.querySelectorAll('.hover-image');
+            const hoverPreview = document.getElementById('hoverPreview');
+
+            hoverImages.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    hoverPreview.src = item.getAttribute('data-img');
+                    hoverPreview.style.display = 'block';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    hoverPreview.style.display = 'none';
+                });
+            });
+
+            // ======= FOOTNOTE SCROLL =======
+            window.scrollToElement = function (selector) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                }
+            };
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
