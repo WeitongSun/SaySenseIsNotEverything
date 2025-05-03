@@ -1,0 +1,293 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Didn't Say Anything-Rasim Bayramov</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+  @font-face {
+  font-family: "Myriad";
+  src: url("fonts/MYRIADPRO-REGULAR.OTF");
+}
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+        height: 100px;
+        width: 200px;
+        justify-content: center;
+    }
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 10px;
+        max-width: 100vw;
+        height: 160px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    }
+
+    @media screen and (min-width: 721px) {
+
+    }
+
+    /* Style for the trace element */
+.cursor-trace {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: rgba(169, 11, 11, 0.15);
+  /* Soft shadow dot */
+  border-radius: 50%;
+  pointer-events: none;
+  animation: fadeOut 0.7s forwards;
+  z-index: 9999;
+}
+
+/* Fading animation */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p> 
+        </div>
+        <div class="img-container">
+            <img src="assets/sight1-rasim.png">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>I Didn't Say Anything</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+      
+        I often find myself hiccuping my words, swallowing what I could’ve said in my language only to spit out something close to it. An off market replica of what I actually mean. Maybe the sentences I make exist, maybe the words I say don’t. The way a word or a phrase sounds in english feels deceptive, and the more I repeat the words I don’t know the meanings of, the more they become alien. Alienated. Not in a way that creates faux distance, but a defamiliarization where the hiccups aren’t avoided and the silence between words becomes my sentences. 
+
+        I remember getting 35 out of a 100, a total F-, lowest in my fifth grade english class. The teacher was a pisces woman in her mid 40s with high index winged prescription glasses. Her voice was almost like a baritone pufferfish, but when she switched to english, her voice would strictly lighten. It was with that voice that she told me my essay on “why i love action man series” was abysmal, and if I want to pass this class I would need to either hire a tutor or practice at home. I didn’t say anything. I couldn’t. Either because the class’ rule was to not speak in anything other than english, or…..I was just silent. My mom, thinking economically but not knowing too much english herself, took the matter into her own hands. She would help me with textbooks and test practices, underlining, crossing, circling words that would need to be learned, that would require remembering. Within all that remembrance, there was a lot of back and forth on how the prepositions in writing need to have gaps around them in order to make sense. But in speech these gaps are ignored, plastering a connection, a forced continuation of more things to say. A muscle that keeps getting pulled until it reaches atrophy. To be born with another language, before a single word comes out of one’s mouth. A hiccup will take its place, a mouth full of stillness. If i try to lend you a lullaby in turkish, will you make sure that the silence is heard? If I try to lend you a memory in english, will you make sure that the silence is understood? If i try to lend you an image in russian, will you make sure that the silence is lived? 
+        
+        After moving out at sixteen to study abroad, I slowly began to lose my language. With every new atrophy, my language changed, along with the words I spoke. The silences that I forgot to create. Each second, a line break misplaced. Countless academic phrases later, with more words lost, it was in my last year of undergrad that I realized what was lost. I realized that what I most deeply feared was being misunderstood in my own language, more than in the languages I acquired. For me, azerbaijani was never a language to express emotions. In the previous century and before, azerbaijani functioned as lingua franca, a bridge language for Transcaucasia. A language with a sole goal of getting from A to Z. A place for direct instructions and a wide gap full of lingering silence. A silence that I was familiar with through my dad. 
+        
+        In the middle of a ten meter squared apartment, his desk stood in the middle of the facing wall. A blue and brown laminated computer desk with a hutch. A small shelf next to it dedicated to pocket dictionaries, books about mythology and the reader on constitution. The leather covers accumulated dust and greenish pollen, fingertip marks only on the dictionaries. Grey metal case surrounded by black and white copies. Most of his work on that desk included a lot of translations of notarized documents, diplomas, dissertations, manuals, catalogues, interfacing between six languages. Languages, papers, lives of people flowing, gaining, losing meaning and staying at his old Fujitsu desktop computer that he still refuses to change. It’s been 24 years since he started translating. Within that period, he was silent. He is silent. A silence that I tend from a far, out of curiosity. My mom has a running joke that the reason he became so silent is because someone has put a cadu, a spell on him. A specific kind of a spell with a goal of closing one’s mouth for two decades. A spell usually cast in russian because of its protestant origins, where the mouth part of a person’s stick figure drawing gets pierced with a safety pin, submerged in a glass of water and later dropped in the sea. He spent most of his early adolescent years in places away from home, from the sea, in Tashkent, Delhi, Islamabad. In universities and workplaces abroad, where his tongue was shaped by the mountains he chose to stay next to. Whether it was a deliberate choice or not, my mom tells me that each trip, each stay his words pluck a different petal. And in that garden full of flowers, with a stem in his hand, he chose quietness. I often think of what he would want to say if he never learned any languages, never became a translator. If he never agreed to become a bridge in between to interpret meaning for two languages, while losing his own. Would knowing only azerbaijani, keep the silence that it inherits or remove it?
+        
+        In this case, his silence holds a space as big as the Caspian sea, never reaching either ends of the shore, only to make strangers meet at the end. Maybe he keeps the words to himself. Maybe in the back of single sided prints. Maybe in the roof of his mouth. To make the quietness only a room for memories, and nothing else. To sit at a Word doc and articulate the nothingness of a blinking caret.
+        
+        
+            <br><br>
+            <span class="note" style="color: #76c155;">Rasim Bayramov</span>
+            <br><br>
+            <span class="note" style="color: #76c155;">Rasim Bayramov is a designer from Baku who through their work are trying to fill in the gaps with slowness still enough to keep us both here, long enough to stitch the rubber of our shoes to each other. They try to make it happen through websites, installations, print, videos, performances and sculptures. They received their BSc in Industrial Design from the Middle East Technical University and are currently finishing their MFA degree at Virginia Commonwealth University.</span>
+            
+        </h3>
+        <script>
+            VanillaTilt.init(document.querySelector(".tilt-video"), {
+                max: 5,
+                speed: 200,
+                glare: true,
+                "max-glare": 4,
+            });
+
+            document.addEventListener('click', () => {
+                Tone.start();
+
+                // Array of tones or notes corresponding to each span
+                const tones = [
+                    'E3', // Meg Miller
+                    'G3', // Jalen Adams
+                    'F3', // Rasim Bayramov
+                    'D3', // Kai Chu Chuang
+                    'C3', // Molly Garrett
+                    'B3', // Tariye George-Phillips
+                    'F3', // Aya Khalife
+                    'G3', // Bradley Sinanan
+                    'A3', // Quinn Standley
+                    'D#3', // Weitong Sun
+                    'G3', // Taehee
+                    'F3', // Yuan Xin
+                    'C3',  // Yangyang Zhang
+                ];
+
+                const notes = document.querySelectorAll('.note');
+
+                notes.forEach((note, index) => {
+                    note.addEventListener('mouseenter', () => {
+                        const synth = new Tone.Synth().toDestination();
+                        synth.triggerAttackRelease(tones[index], '8n');
+                    });
+                });
+            });
+            document.addEventListener('mousemove', (e) => {
+            const trace = document.createElement('div');
+            trace.classList.add('cursor-trace');
+            trace.style.left = `${e.clientX}px`;
+            trace.style.top = `${e.clientY}px`;
+            document.body.appendChild(trace);
+        
+            // Remove after animation
+            setTimeout(() => {
+                trace.remove();
+            }, 700); // Matches fadeOut duration
+            });
+
+        </script>
+
+</body>
+
+</html>
