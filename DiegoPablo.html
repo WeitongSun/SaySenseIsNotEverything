@@ -1,0 +1,355 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinates of Memory-Diego Pablo Málaga</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+  @font-face {
+  font-family: "Myriad";
+  src: url("fonts/MYRIADPRO-REGULAR.OTF");
+}
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+        
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 10px;
+        max-width: 100vw;
+        height: 160px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    }
+
+    @media screen and (min-width: 721px) {
+
+    }
+
+    /* Style for the trace element */
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+}
+
+/* Fading animation */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+.sound1:hover {
+    color: yellow;
+    cursor: pointer;
+}
+
+a{
+    color: #f28e25;
+}
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p> 
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src="" style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>Coordinates of Memory</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+        Every so often, I open up Google Maps and search for my grandmother's home.
+        <br><br>
+
+        I don't know the address by heart. Every time I've found her house has been an act of pure perseverance. I begin by plopping myself down somewhere in southern Lima, clicking my way up and down winding streets. I try to tell myself that these roads are familiar, that these names should be ingrained deep in my psyche, but they're not. 
+        <br><br>
+        I know my mother grew up in the neighborhood of Santiago de Surco. I type its name into the Google Maps search bar, and Google tells me its boundaries. I try to sear it into my memory as if I'm studying for a test. Surco is to the left of Miraflores (where I was born) and Barranco. I can't find what borders it to the north. Google tells me it's the neighborhood of La Victoria, but I can't recall ever hearing of it. I turn to Wikipedia for further guidance. 
+        <br><br>
+        Wikipedia tells me:
+            <br><br>
+            <b>Santiago de Surco</b>, commonly known simply as <b>Surco</b>, is a district of <a href="https://en.wikipedia.org/wiki/Lima">Lima</a>, <a href="https://en.wikipedia.org/wiki/Peru">Peru</a>. It is bordered on the north with the district of <a href="https://en.wikipedia.org/wiki/Ate_District">Ate Vitarte</a> and <a href="https://en.wikipedia.org/wiki/La_Molina_District">La Molina</a>; on the east with <a href="https://en.wikipedia.org/wiki/San_Juan_de_Miraflores">San Juan de Miraflores</a>, on the west with <a href="https://en.wikipedia.org/wiki/San_Borja_District">San Borja</a>, <a href="https://en.wikipedia.org/wiki/Surquillo">Surquillo</a>, <a href="https://en.wikipedia.org/wiki/Miraflores_District,_Lima">Miraflores</a> and <a href="https://en.wikipedia.org/wiki/Barranco_District">Barranco</a>, and on the south with <a href="https://en.wikipedia.org/wiki/Chorrillos_District">Chorrillos</a>. 
+
+            <br><br>
+            I re-read the Wikipedia article over and over again until the names are no longer a jumble of information. I click on each neighborhood on Google Maps, looking at their misshapen borders and taking notes on what avenues and streets divide one from the other. And then back to Wikipedia to cross-reference.
+
+            <br><br>
+            I don't know the district of Ate Vitarte, but I do recall the district of La Molina because my grandfather was buried there alongside his mother, though not in the same familial plot. I have briefly heard of San Borja and Surquillo, as well as Chorrillos. I spend a moment convincing myself I have family in all three. I make a mental note to ask my mother about it later. Ate Vitarte, San Juan De Miraflores, San Borja, Surquillo, Miraflores, Barranco, and Chorrillos. I say the names out loud. They do not seem foreign on my tongue, but I am disappointed. There is no spark of knowing when voicing these neighborhoods. 
+
+            <br><br>
+            I pause and say them out loud again. <span class="sound1"><img src="img/sound.png" width="15px"> (Sound)</span>
+            <br><br>
+            Years of growing up in Miami have whittled down my pronunciation into a vague accent that has no location. My neutral accent doesn't announce itself. I think of how my cousin would say Surco, how his thick Limeño accent announces not just being Peruvian but the exact city he's from. He would emphasize "Sur" but would sing the "co" low and deep. 
+            <br><br>
+            I mimic it. "Sur-co." I feel like a child. I wonder if people can tell that I'm putting it on.
+            <br><br>
+            I switch tabs from Wikipedia back to Google Maps. There is a park outside my grandmother's house. If I can find it, I can find home. The issue is I never remember the name. My family always just called it "El Parque." The park. I had my seventh birthday in it, powerpuff girls themed.
+            <br><br>
+            I close my eyes and try to recall the street name of my grandmother's home. I remember half of it. I plug in an assortment of words into Google, and it doesn't narrow anything down far enough. I cycle through each suggestion, trying to find a park. Eventually, I switch to street view and start clicking haphazardly. I will myself to remember. I convince myself that these desert streets are home, as familiar to me as American strip malls. 
+            <br><br>
+            There are many false starts. Each park, I swear, is as familiar as my own blood, yet they turn into another reminder of how little I know about this city and how alienated I am from my ancestral home. When I finally stumble upon the park in front of my grandmother's home, there is no spark of familiarity. The park is called “Parque Los Alhelíes.” Park of the Wallflowers. I start clicking around without much thought, zooming through the streets until a spiral-shaped fence catches my eye. My grandmother had a neighbor a street down that had this beautiful spiral fence in front of their home. We'd pass it when walking to the corner store. Immediately I start dragging my cursor up and down that street desperately, like I'm running. I know my home is close, just a few clicks away. 
+            <br><br>
+            When I find my grandmother's house, I almost miss it. <span class="hover-image" data-img="img/diegopablo_Sight1.png"><img src="img/sight.png" width="20px"> (Sight)</span>
+            It's painted white, and what used to be a triangular tiled roof is now a flat cube. My stomach lurches. I drag my cursor up and down as if swiveling my head, trying to find traces of the old house. 
+            <br><br>
+            The house's front gate still has that white volcanic rock <span class="hover-image" data-img="img/diegopablo_touch1.jpg"> <img src="img/touch.png" width="19px"> (Touch)</span>  my grandfather insisted on bringing all the way from his home city of Arequipa, a mountainous town in southern Peru, so high up my grandfather would tell me it's where the heavens meet the earth. I recall my mother telling me how soft the rock is and how she carved her name with her fingernail near the letterbox. I wonder if the new owners know or if, when they somehow stumble upon her name after a few years, they would decide to dig it out.
+            <br><br>
+            I click around some more, frustrated by the flat interface of Google Street View. I keep trying to zoom in, trying to burst through the photograph and up through the front steps. Eventually I wise up and change the dates on Google, to 2013, the earliest date. And, well, there's my house, enshrined on some random Google server. 
+            <br><br>
+            After a few moments or so, I attempt to take a screenshot, but Google doesn't let me center on our house. I click to the left, and my house is hidden behind a tree. I click to the right, and I'm staring straight at our neighbor. I start offering up a little plea to the past Google Street View driver to slow down and let me look at my house again. I get somewhat close, but the house is never front and center. <span class="hover-image" data-img="img/diegopablo_Sight2.png"><img src="img/sight.png" width="20px"> (Sight)</span>
+            <br><br>
+
+            <span class="note" style="color: #f28e25;">Diego Pablo Málaga</span>
+            <br><br>
+            <span class="note" style="color: #f28e25;">Diego Pablo Málaga is a painter and printmaker, examining themes of identity, culture, and anti-assimilation. Málaga holds an MFA in Painting and Printmaking from the Virginia Commonwealth University and is currently based in Brooklyn, NYC, where he continues to investigate the intersection of personal experience and cultural mythology.
+            <br><br></span>
+            
+        </h3>
+        <script>
+            // VanillaTilt.init(document.querySelector(".tilt-video"), {
+            //     max: 5,
+            //     speed: 200,
+            //     glare: true,
+            //     "max-glare": 4,
+            // });
+
+            const sound1 = document.querySelector('.sound1');
+
+            // Load the sound file
+            const player = new Tone.Player("sound/diegopablo_sound.m4a").toDestination(); // Change to dp.wav if needed
+
+            sound1.addEventListener('mouseenter', () => {
+              player.start();
+            });
+
+            document.addEventListener('click', () => {
+                Tone.start();
+
+                // Array of tones or notes corresponding to each span
+                const tones = [
+                    'E3', // Meg Miller
+                    'G3', // Jalen Adams
+                    'F3', // Rasim Bayramov
+                    'D3', // Kai Chu Chuang
+                    'C3', // Molly Garrett
+                    'B3', // Tariye George-Phillips
+                    'F3', // Aya Khalife
+                    'G3', // Bradley Sinanan
+                    'A3', // Quinn Standley
+                    'D#3', // Weitong Sun
+                    'G3', // Taehee
+                    'F3', // Yuan Xin
+                    'C3',  // Yangyang Zhang
+                ];
+
+                const notes = document.querySelectorAll('.note');
+
+                notes.forEach((note, index) => {
+                    note.addEventListener('mouseenter', () => {
+                        const synth = new Tone.Synth().toDestination();
+                        synth.triggerAttackRelease(tones[index], '8n');
+                    });
+                });
+            });
+
+            document.addEventListener('mousemove', (e) => {
+            const trace = document.createElement('div');
+            trace.classList.add('cursor-trace');
+            trace.style.left = `${e.clientX}px`;
+            trace.style.top = `${e.clientY}px`;
+            document.body.appendChild(trace);
+        
+            // Remove after animation
+            setTimeout(() => {
+                trace.remove();
+            }, 700); // Matches fadeOut duration
+            });
+
+            const hoverImages = document.querySelectorAll('.hover-image');
+            const hoverPreview = document.getElementById('hoverPreview');
+
+            hoverImages.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    hoverPreview.src = item.getAttribute('data-img');
+                    hoverPreview.style.display = 'block';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    hoverPreview.style.display = 'none';
+                });
+            });
+
+
+        </script>
+
+</body>
+
+</html>

@@ -1,0 +1,465 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two or three things and something else-Tyna Ontko</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+    .right{
+        text-align: right;
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
+
+    }
+
+    @media screen and (min-width: 721px) {}
+
+    /* Style for the trace element */
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
+
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #f28e25;
+    }
+
+    .number1,
+    .number2 {
+        color: #f26830;
+    }
+
+    .number1:hover,
+    .number2:hover {
+        cursor: pointer;
+    }
+
+    .footnote1:hover,
+    .footnote2:hover {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>Two or Three Things and Something Else</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+        There are two or three things I know for sure.<span class="number1"
+            onclick="scrollToElement('.footnote1')">[1]</span>
+        <br><br>
+
+        Like when the arthritis kicks, Grandma rubs a handful of Poitin onto her knee.<br>
+        Then maybe it’ll rain.<br>
+        And when I’m thirsty, I take two sticks and cross them one over the other, following a whim all the way to the
+        cistern.<br>
+        If I fill all the pots in my cupboards with water, boil them on high for three minutes each, I can subsist on
+        this amount for seven days.<br>
+        When it gets cold enough, we run the downstairs faucets at the diameter of a pencil lead, so the pipes don’t
+        burst. <br>
+        I once had a fever so high, the thermometer wouldn’t read. Instead of taking me to the hospital,Grandma had my
+        sister fill all the tupperwares and ziploc baggies she could find in the kitchen with freshly fallen snow. She
+        was instructed to bring them inside and place them on top of me. I was all splayed
+        out on the brown velvet couch, sweating through three layers of beach towels, faintly listening to her sing
+        familiar songs.
+
+        <br><br>
+        <i>Pickin' up paw paws, put 'em in your pocket</i><br>
+        <i>Pickin' up paw paws, put 'em in your pocket</i><br>
+        <i>Pickin' up paw paws, put 'em in your pocket</i><br>
+        <i>Way down yonder in the paw paw patch</i>
+
+        <br><br>
+        Grandma kept a snowball from that day in a ziploc bag in the freezer for twenty years. She thought that if it
+        melted, something bad might happen.
+
+        <br><br>
+        During the summer in which I moved to Virginia, we moved my grandparents out of that house-the house they’d
+        lived in for more than sixty years, the house my Mom grew up in, the house I grew up in. In the process, someone
+        threw that snowball away. Grandma passed less than a year later.
+
+
+        <br><br>
+        I sat for a while trying to think of the first thing,<br>
+        and then trying to think<br>
+        of something else.<br>
+        It so happens that there are many things I don’t know.<br>
+
+
+        <br><br>
+        How a bird knows to make their nest, for example.<br>
+        Or how a moth knows to tailor the chrysalis to their bodies form-to-be<br>
+        and not their bodies form-as-is.<br>
+        How a humpback whale can anticipate the way that sound takes approximately thirty minutes to bend through deep
+        water. If their songs to loved ones are written in the present tense, then their present is thirty minutes into
+        our future.<br>
+        Or how a salmon knows which way to swim to their death.<br>
+
+        <br><br>
+        It’s as if life tends towards a certain shape.
+
+        <br><br>
+        If the tunnel is a worm shaped hole in the Earth,<br>
+        the worm knows the tunnel by knowing where their body ends and the Earth begins.
+
+        <br><br>
+        If language is how we know to feel our way through the subterranean space of becoming, maybe the shape of our
+        tunnels <span class="hover-image" data-img="img/Tyna_Sight1.jpg"><img src="img/sight.png" width="20px">
+            (Sight)</span> <span class="hover-image" data-img="img/Tyna_Sight2.jpeg"> <img src="img/sight.png"
+                width="20px"> (Sight) </span>are our words, our stories. In turn, the material reality of our lives are
+        shaped through the act of uttering them into existence.
+        <br><br>
+        A collective murmur hums <span class="hover-image" data-img="sound/Tyna_Sound.png"><img src="img/sound.png"
+                width="15px"> (Sound) </span> in the background of all things.
+        <br><br>
+        But I begin to feel dispirited by language when the purpose of language is declared by way of language. A
+        delicate series of social twists and turns through which we shape our world used to take place over the course
+        of hundreds of years. Now increasingly reliant on algorithmic models, this can happen in mere minutes. The act
+        of materially producing common sense means that elsewhere, whole ecosystems are being whittled down to stubs.
+        Eventually, the pleasure of recognizing a reality laden with the qualifiers of common sense will become a habit
+        of measuring what is real against it. There isn’t an algorithm in the world with which to calculate the price
+        that near future generations will be paying for this version of sense.
+
+        <br><br>
+        <div class="right">
+        The shape a story takes is far from being a neutral container.<br><br>
+        I recently heard a story which claims that when Monarch<br><br>
+
+        butterflies migrate south for the winter, all the ones<br><br>
+
+        that fly across the middle of Lake Superior suddenly<br><br>
+
+        stop orienting southward and turn toward the<br><br>
+
+        east for a few miles before they<br><br>
+
+        continue south again.<br><br>
+
+        This really freaked<br><br>
+
+        people out<br><br>
+
+        because,<br><br>
+
+        <i>what is</i><br><br>
+
+        <i>in the middle</i><br><br>
+
+        <i> of Lake Superior</i><br><br>
+
+        <i>that butterflies know that we don’t?</i><br><br>
+
+        It turns out that some hundred million years ago<br><br>
+
+        there may have been a mountain there and the butterflies still<br><br>
+
+        think they need to fly around it.<br>
+        </div>
+
+
+        <br><br>
+        What if we are the tunnel? Instead of dividing subject and object, segmenting life into convenient intervals, maybe living is what takes place in the gestures between them <span class="hover-image" data-img="img/Tyna_Touch.JPG"> <img src="img/touch.png" width="19px"> touch</span>.
+
+        <br><br>
+        Let us mark this time with a bend. Where maybe memories are the only things which remain, and trying to keep them is like trying to keep a snowball in a ziploc bag in the freezer for twenty years.
+
+        <br><br><br><br>
+
+        <span class="footnote1" style="color: #f89b64;" onclick="scrollToElement('.number1')">1</span> - Two or three
+        things I know for sure. Dorothy Allison. Penguin Books. 1996.<br>
+        
+        <br><br><br><br>
+
+        <span class="note" style="color: #f89b64;">Tyna Ontko</span>
+        <br><br>
+        <span class="note" style="color: #f89b64;">Tyna Ontko’s practice positions facets of speculative futures, present-day-truth-telling, and the everyday construction of histories among one another in the form of sculptural assemblage. An artist and aspiring writer, she hails from the Kitsap Peninsula of western Washington state, an area which influences her continued interest in handicraft futurism, rural myth-making, and the moments where the archive gives way to the collection gives way to the hoard. Tyna is two weeks away from graduating with an MFA in Sculpture + Extended Media from Virginia Commonwealth University.
+            <br><br></span>
+
+    </h3>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    // ======= SOUND1 (optional, safe check) =======
+    const sound1 = document.querySelector('.sound1');
+
+    if (sound1) {
+        const player = new Tone.Player("sound/diegopablo_sound.m4a").toDestination();
+        sound1.addEventListener('mouseenter', () => {
+            player.start();
+        });
+    }
+
+    // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
+    document.addEventListener('click', () => {
+        Tone.start();
+
+        const tones = [
+            'E3', // Meg Miller
+            'G3', // Jalen Adams
+            'F3', // Rasim Bayramov
+            'D3', // Kai Chu Chuang
+            'C3', // Molly Garrett
+            'B3', // Tariye George-Phillips
+            'F3', // Aya Khalife
+            'G3', // Bradley Sinanan
+            'A3', // Quinn Standley
+            'D#3', // Weitong Sun
+            'G3', // Taehee
+            'F3', // Yuan Xin
+            'C3',  // Yangyang Zhang
+        ];
+
+        const notes = document.querySelectorAll('.note');
+
+        notes.forEach((note, index) => {
+            note.addEventListener('mouseenter', () => {
+                const synth = new Tone.Synth().toDestination();
+                synth.triggerAttackRelease(tones[index], '8n');
+            });
+        });
+    });
+
+    // ======= CURSOR TRACE =======
+    document.addEventListener('mousemove', (e) => {
+        const trace = document.createElement('div');
+        trace.classList.add('cursor-trace');
+        trace.style.left = `${e.clientX}px`;
+        trace.style.top = `${e.clientY}px`;
+        document.body.appendChild(trace);
+
+        setTimeout(() => {
+            trace.remove();
+        }, 700);
+    });
+
+    // ======= HOVER IMAGE PREVIEW =======
+    const hoverImages = document.querySelectorAll('.hover-image');
+    const hoverPreview = document.getElementById('hoverPreview');
+
+    hoverImages.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            hoverPreview.src = item.getAttribute('data-img');
+            hoverPreview.style.display = 'block';
+        });
+
+        item.addEventListener('mouseleave', () => {
+            hoverPreview.style.display = 'none';
+        });
+    });
+
+    // ======= FOOTNOTE SCROLL =======
+    window.scrollToElement = function(selector) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }
+    };
+});
+
+
+
+    </script>
+
+</body>
+
+</html>
