@@ -1,0 +1,455 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This one time in the tunnels-Quinn Standley</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+
+    .right {
+        text-align: right;
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
+
+    }
+
+    @media screen and (min-width: 721px) {}
+
+    /* Style for the trace element */
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
+
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #f28e25;
+    }
+
+    .number1,
+    .number2 {
+        color: #f26830;
+    }
+
+    .number1:hover,
+    .number2:hover {
+        cursor: pointer;
+    }
+
+    .footnote1:hover,
+    .footnote2:hover {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>This one time in the tunnels</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+        I was walking on a narrow sidewalk, wearing brown work boots, black paint-stained pants cut off unevenly above
+        the ankles, a ripped shirt, and a sun-bleached and sweat-stained hat pulled over my eyes – carrying a dirty
+        backpack. My eyes were half-closed, the sun blinding me, ricocheting off passing cars' windshields; the
+        midsummer Tucson heat broiled up from the asphalt.
+
+        <br><br>
+
+        I came across a man spread out horizontally on the sidewalk; his head hung off the curb and rested in the
+        gutter. I bent over and saw that he had a deep gash on his face. The cut was fresh: blood dripped, pooled, and,
+        like a stream, trickled into a drain cut into the curb. Flies swirled around his head.
+
+        <br><br>
+        I asked the man if he was alright, but he hardly even opened his eyes. I shook him with the sole of my boot, but
+        it wasn't until I kicked him in the ribs that he struggled to consciousness. He coughed up blood and mucus. He
+        asked me what I wanted. I said I wanted to see if he was okay. He got aggressive with me, and he said, 'Yes, of
+        course I’m okay,' as if it was a ridiculous question. I told him he had a cut on his head… that he probably
+        needed stitches. He grunted, closed his eyes, and drifted back into unconsciousness. I stood looking at him,
+        wondering if I should call for an ambulance. If he was still lying there when I got back, I would, I decided.
+
+
+        <br><br>
+        I stepped over the unconscious man and walked into a strip mall. It was full of failing businesses: a
+        Packers-themed bar, a trophy store, an on-demand printing shop, a hat store — all of which were always closed.
+        Tucked away in the back was a Baptist community center that occasionally gives out free food to whoever is
+        around. Anywhere from ten to twenty winos and tweakers would hang out there, taking nips from bottles and
+        swallowing fentanyl-laced pills. I walked by a few of them who were nodding off in the useless shade of a
+        mesquite tree. A chest-high railing guards a sloping drop — about 10 feet — that leads to a sandy, trash-filled
+        wash. I slid down and walked to the start of the tunnel system.
+
+        <br><br>
+        The mouth of the tunnel is rectangular, about 15 feet wide and 8 feet high. The ground was damp from the
+        previous days' storm that flooded the city. The previous two times I'd come here, I didn't bring any light
+        sources — it takes about an hour of slow walking to get back to where it becomes pitch-dark. This time, I
+        brought a headlamp and a lantern.
+
+        <br><br>
+        I walked into the tunnel, embraced by a cool breeze that felt supernatural. After a few minutes of walking, I
+        heard a metallic banging coming from deeper inside — the sound echoing. I pulled out my knife — more so for
+        insurance; I didn’t want to have to use it. I navigated a tight curve, giving me a view of a shirtless man
+        holding a thick metal pipe, which he slammed against the wall. I was coming up from behind him, so I opened my
+        blade — keeping it hidden next to my leg. I shuffled my feet to make some noise so that I didn’t surprise him.
+        He stopped and turned to me. I nodded to him, and he said, 'Hey, how are you doing?' I said I was doing just
+        fine and walked by him without issue. I put my blade away. When I was out of sight, he continued banging the
+        pipe.
+
+        <br><br>
+        Grates are built into the ceiling. They lead up to the streets to funnel in floodwater; they also let sunlight
+        in. When cars pass over them, there is a loud ka-bang sound that echoes. At first, the noise is jarring, but it
+        becomes meditative after a while. However, when cars pass over the ones that have loosened over time, they sound
+        like gunshots.
+
+        <br><br>
+        From a grate in front of me, I saw something dripping. Droplets jumped from a coagulated puddle on the ground. I
+        got closer. Looking down at the puddle, the substance looked black. I dipped my finger in it, studying it under
+        the ambient light coming from above, thinking it was oil or gasoline. I panicked when it turned from black to
+        red as I lifted my finger to my eyes... it was blood. I frantically wiped my hand on my pants. Looking up
+        through the grate, I tried to get a sense of where I was. 'Broad,' the sign said... Broad and... it was the
+        sidewalk I had just been walking on, I realized. That blood was probably coming from that guy’s head. I
+        continued on into the tunnel, growing paranoid. What if I had a small cut on my finger, and that blood got into
+        it? I could contract a disease. I recalled seeing track marks all over his arms.
+
+        <br><br>
+        I walked under the last grate before the tunnel turned to void. This was where I turned back last time. It got
+        so dark that I couldn't see my hand if I put it right in front of my face. I turned my headlamp on and adjusted
+        the beam. The tunnel split in two like a wishbone. I mindlessly chose to go to the left first. I could only see
+        about 20 feet in front of me; beyond that was just black. It was wetter here; water dripped from the ceiling.
+        The smell was moldy and stale. I couldn’t hear cars pass by anymore, or that guy banging the pipe; all I could
+        hear was an industrial hum.
+
+        <br><br>
+        There was art on the walls, not graffiti like near the entrance. This stuff was stranger, painted with brushes
+        rather than spray cans… all in black, white, and red. Handwritten verses surrounded the compositions. They
+        wrapped from floor to ceiling, perhaps forming a linear narrative. I took out my lantern, needing more light to
+        take everything in. First, there was a house on a hill surrounded by three leafless trees. Snow covered the
+        empty plot of land on which it was built. Red paint had dried as it dripped from a painted corpse lying in the
+        snow. I put my face right up to the wall and realized the figure had a spike hammered into its sternum. I
+        tracked the painting with my eyes, coming to something handwritten: 'Meaningless! Meaningless!' says the
+        Teacher. 'Everything is meaningless.' I recognized the passage from Ecclesiastes.
+
+        <br><br>
+        The hill on which the house was built made a sort of horizon that flowed around the wall. My eyes came to
+        another subject: silhouetted by a detailed white moon was a ring of hooded figures holding hands and performing
+        a danse macabre. A neatly framed box of writing next to it read: 'A time to weep and a time to laugh, a time to
+        mourn and a time to dance.' The horizon line continued into the void of the tunnel. I walked next to it,
+        tracking it with my headlamp until I came to the largest piece: it was a painting of a hanged man, life-size in
+        proportion. I traced it with my hand, realizing that it was carved in relief out of the concrete wall and filled
+        in with black paint. Next to it read: 'For the living know that they will die, but the dead know nothing; they
+        have no further reward, and even their name is forgotten.' An arrow was painted next to it, pointing deeper into
+        the abyssal black. I took a few more steps and saw another one.
+
+        <br><br>
+        I followed the arrows until I came to a medium-sized hole cut into the ground, another tunnel within. If I
+        hadn’t been walking slowly, I could’ve fallen down into it. The opening was a perfect circle with a three-foot
+        diameter. I got down on my knees and pointed my light down into it, careful not to slip. I couldn’t see beyond
+        the few feet that my beam illuminated, but there were arrows painted down the sides. I stuck my head down the
+        hole as far as I could get without falling headfirst, trying to get my light to find the floor.
+
+        <br><br>
+        Abruptly, a laugh came from somewhere. The tunnels echoed so much that I couldn’t tell where exactly it had come from. I got to my feet and listened carefully, but I didn’t hear it again; maybe it was a truck passing over a grate further back. I got back on my knees and peered down into the tunnel. I grabbed my lantern, and with my outstretched arm, extended it as far down as I could. There was another laugh; this time, it was louder, closer, coming from somewhere down this new tunnel. I tried to get back up, but my lantern slipped out of my hand. I watched it fall twenty feet down the tunnel and land in a pile of sand.
+        <br><br>
+        The laugh became a visceral cackle, then there was a scraping sound. It sounded like someone was crawling below me. I kept watching where my lamp had fallen when, suddenly, it illuminated a wrinkled hand. The hand grabbed my lamp, and then the rest of the man’s naked body was visible as he slithered into view. He looked up at me with eyes that looked like glass. He was so skinny that his thin skin exposed his bones and joints – merely a skeleton. He laughed again, drool coming out of his toothless mouth. He looked up at me and said, "You came! You finally came!" I was frozen with fear and disgust; what I was looking at didn’t even seem human. I couldn’t find any words to utter. "I’ve been waiting for you, for so… so long." He began to get up, his bones creaking and snapping. His eyes turned black, and he said, grinning, "Finally."
+
+        <br><br>
+        I snapped back into awareness and jumped to my feet. I turned and ran toward the entrance I had come from. It took me 20 minutes of frantic sprinting to reach where the grates let light in. I took a breath, turned off my lights, and walked quickly the rest of the way, wondering what had just happened. I passed by the guy with the pipe; he was sleeping now. I nudged him awake and told him what had happened deeper in the tunnel. He told me to get lost and to lay off the acid or something. I finally made my way outside.
+
+        <br><br>
+        I scrambled back up to the community center. The same people were out front, still asleep, cuddling with their empty bottles. Dark, brooding clouds floated over the northern mountains. I got back on the sidewalk and walked back to my car.
+
+        <br><br>
+        walked by where the guy who had been dripping blood into the tunnel was laying. A puddle of blood was all that remained. I stared at it for a while, feeling bad that I hadn’t called for help. The rain came down before the lightning struck, and I was soaked by the time I reached my car. I drove home and went straight to bed, even though it wasn’t even eight yet. I dialed the police station to report or inquire about that man but hung up the call before anyone was on the other line.
+
+        <br><br><br><br>
+
+        <span class="note" style="color: #de658a;">Quinn Standley</span>
+        <br><br>
+        <span class="note" style="color: #de658a;">Quinn Standley (B. Phoenix, Arizona) is a multimedia artist whose practice spans photography, video, film, and expanded media technologies. His work investigates consciousness, perception, and the nature of being alive through a self-documentary practice. He explores the materiality of the universe, the mechanics of consciousness, and ecological interconnectedness. His philosophical, critical, and introspective multimedia projects are simultaneously otherworldly and deeply human.
+
+            <br><br></span>
+
+    </h3>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ======= SOUND1 (optional, safe check) =======
+            const sound1 = document.querySelector('.sound1');
+
+            if (sound1) {
+                const player = new Tone.Player("sound/diegopablo_sound.m4a").toDestination();
+                sound1.addEventListener('mouseenter', () => {
+                    player.start();
+                });
+            }
+
+            // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
+            document.addEventListener('click', () => {
+                Tone.start();
+
+                const tones = [
+                    'E3', // Meg Miller
+                    'G3', // Jalen Adams
+                    'F3', // Rasim Bayramov
+                    'D3', // Kai Chu Chuang
+                    'C3', // Molly Garrett
+                    'B3', // Tariye George-Phillips
+                    'F3', // Aya Khalife
+                    'G3', // Bradley Sinanan
+                    'A3', // Quinn Standley
+                    'D#3', // Weitong Sun
+                    'G3', // Taehee
+                    'F3', // Yuan Xin
+                    'C3',  // Yangyang Zhang
+                ];
+
+                const notes = document.querySelectorAll('.note');
+
+                notes.forEach((note, index) => {
+                    note.addEventListener('mouseenter', () => {
+                        const synth = new Tone.Synth().toDestination();
+                        synth.triggerAttackRelease(tones[index], '8n');
+                    });
+                });
+            });
+
+            // ======= CURSOR TRACE =======
+            document.addEventListener('mousemove', (e) => {
+                const trace = document.createElement('div');
+                trace.classList.add('cursor-trace');
+                trace.style.left = `${e.clientX}px`;
+                trace.style.top = `${e.clientY}px`;
+                document.body.appendChild(trace);
+
+                setTimeout(() => {
+                    trace.remove();
+                }, 700);
+            });
+
+            // ======= HOVER IMAGE PREVIEW =======
+            const hoverImages = document.querySelectorAll('.hover-image');
+            const hoverPreview = document.getElementById('hoverPreview');
+
+            hoverImages.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    hoverPreview.src = item.getAttribute('data-img');
+                    hoverPreview.style.display = 'block';
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    hoverPreview.style.display = 'none';
+                });
+            });
+
+            // ======= FOOTNOTE SCROLL =======
+            window.scrollToElement = function (selector) {
+                const element = document.querySelector(selector);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+                }
+            };
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>
