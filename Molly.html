@@ -302,7 +302,7 @@
         <br><br>
         She’s overtired, Kelly thinks. Privately, she’s always been concerned about the effects on children as they interact with their teacher’s speech protocol all day; and besides, it’s hard for even adults to look at their screen that long. She’ll be surprised if Hazel makes it through dinner at all tonight.
         <br><br>
-        <center>“It’s okay baby, see! Here’s another apple. I’ll eat the cut up one.”<span class="hover-image" data-img="img/Molly_Taste-01.jpg"><img src="img/taste.png" width="20px"></span></center>
+        <center>“It’s okay baby, see! Here’s another apple. I’ll eat the cut up one.”<span class="hover-image" data-img="img/Molly_Taste-01.jpg"><img src="img/taste.png" width="25px"></span></center>
         <br><br>
         —
         <br><br>
@@ -411,12 +411,12 @@
     // ======= SOUND1 (optional, safe check) =======
     const sound1 = document.querySelector('.sound1');
 
-    // if (sound1) {
-    //     const player = new Tone.Player("sound/Molly_Sound.mp3").toDestination();
-    //     sound1.addEventListener('mouseenter', () => {
-    //         player.start();
-    //     });
-    // }
+    if (sound1) {
+        const player = new Tone.Player("sound/Molly_Sound.m4a").toDestination();
+        sound1.addEventListener('mouseenter', () => {
+            player.start();
+        });
+    }
 
     // if (sound2) {
     //     const player = new Tone.Player("sound/Molly_Touch.mp3").toDestination();
