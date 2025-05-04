@@ -329,53 +329,45 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // ======= SOUND (hover for desktop, tap for mobile) =======
+            // ======= SOUND (Hover on desktop / Tap/Click on mobile) =======
             const soundIcons = document.querySelectorAll('.sound1, .sound2');
+
+            // Universal unlock for Tone.js (required for mobile browsers)
+            function unlockAudio() {
+                if (Tone.context.state !== 'running') {
+                    Tone.start();
+                }
+            }
+            document.addEventListener('click', unlockAudio, { once: true });
+            document.addEventListener('touchstart', unlockAudio, { once: true });
 
             soundIcons.forEach(icon => {
                 const soundFile = icon.classList.contains('sound2') ? "sound/hearing2-rasim.mp3" : "sound/hearing1-rasim.mp3";
-                const player = new Tone.Player(soundFile).toDestination();
-
-                // Universal unlock for mobile (iOS + Android browsers need user gesture first)
-                function unlockAudio() {
-                    if (Tone.context.state !== 'running') {
-                        Tone.start();
-                    }
-                }
-                document.addEventListener('click', unlockAudio, { once: true });
-                document.addEventListener('touchstart', unlockAudio, { once: true });
-
-                // Detect hover support
                 const canHover = window.matchMedia('(hover: hover)').matches;
 
+                const playSound = () => {
+                    const player = new Tone.Player(soundFile).toDestination();
+                    player.autostart = true; // this will start immediately
+                };
+
                 if (canHover) {
-                    // Desktop hover
-                    icon.addEventListener('mouseenter', () => {
-                        player.start();
-                    });
-                } else {
-                    // Mobile tap
-                    icon.addEventListener('touchstart', () => {
-                        player.start();
-                    });
-                    icon.addEventListener('click', () => {
-                        player.start();
-                    });
+                    // Desktop hover play
+                    icon.addEventListener('mouseenter', playSound);
                 }
+
+                // Always allow click/tap
+                icon.addEventListener('click', playSound);
+                icon.addEventListener('touchstart', playSound);
             });
 
 
-            // ======= VIDEO on hover/tap → play → disappear when done =======
+            // ======= VIDEO (Hover or tap → show + play → disappear when ended) =======
             const videoIcons = document.querySelectorAll('.video1');
 
             videoIcons.forEach(icon => {
-                icon.addEventListener('mouseenter', showAndPlayVideo);
-                icon.addEventListener('click', showAndPlayVideo); // Mobile support
-
-                function showAndPlayVideo() {
-                    // Create video element
+                const showAndPlayVideo = () => {
                     const video = document.createElement('video');
-                    video.src = "video/sample.mp4"; // Change this to your video path
+                    video.src = "video/sample.mp4"; // Replace with your video path
                     video.style.position = "fixed";
                     video.style.top = "20px";
                     video.style.right = "20px";
@@ -383,24 +375,30 @@
                     video.style.zIndex = "9999";
                     video.autoplay = true;
                     video.muted = false;
-                    video.playsInline = true; // important for mobile
+                    video.playsInline = true; // Important for mobile browsers
+
                     document.body.appendChild(video);
 
                     video.addEventListener('ended', () => {
                         video.remove();
                     });
+                };
+
+                const canHover = window.matchMedia('(hover: hover)').matches;
+
+                if (canHover) {
+                    icon.addEventListener('mouseenter', showAndPlayVideo);
                 }
+                icon.addEventListener('click', showAndPlayVideo);
+                icon.addEventListener('touchstart', showAndPlayVideo);
             });
 
 
-            // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
+            // ======= CLICK TO START Tone Synth Notes (for .note elements) =======
             document.addEventListener('click', () => {
                 Tone.start();
 
-                const tones = [
-                    'E3', 'G3', 'F3', 'D3', 'C3', 'B3', 'F3', 'G3', 'A3', 'D#3', 'G3', 'F3', 'C3'
-                ];
-
+                const tones = ['E3', 'G3', 'F3', 'D3', 'C3', 'B3', 'F3', 'G3', 'A3', 'D#3', 'G3', 'F3', 'C3'];
                 const notes = document.querySelectorAll('.note');
 
                 notes.forEach((note, index) => {
@@ -442,7 +440,7 @@
             });
 
 
-            // ======= FOOTNOTE SCROLL (optional usage) =======
+            // ======= FOOTNOTE SCROLL =======
             window.scrollToElement = function (selector) {
                 const element = document.querySelector(selector);
                 if (element) {
@@ -451,6 +449,8 @@
             };
 
         });
+
+
 
     </script>
 
