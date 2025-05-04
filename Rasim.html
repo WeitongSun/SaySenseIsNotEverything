@@ -308,7 +308,8 @@
         In this case, his silence holds a space as big as the Caspian sea, never reaching either ends of the shore, only
         to make strangers meet at the end. Maybe he keeps the words to himself. Maybe in the back of single sided
         prints. Maybe in the roof of his mouth. To make the quietness only a room for memories, and nothing else. To sit
-        at a Word doc and articulate the nothingness of a blinking caret. <span class="hover-image" data-img="assets/sight1-rasim.png">
+        at a Word doc and articulate the nothingness of a blinking caret. <span class="hover-image"
+            data-img="assets/sight1-rasim.png">
             <img src="img/sight.png" width="20px">
         </span>
 
@@ -327,34 +328,77 @@
     </h3>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ======= SOUND1 (optional, safe check) =======
-            const sound1 = document.querySelector('.sound1');
 
-            if (sound1) {
-                const player = new Tone.Player("sound/hearing1-rasim.mp3").toDestination();
-                sound1.addEventListener('mouseenter', () => {
-                    player.start();
-                });
-            }
+            // ======= SOUND (hover for desktop, tap for mobile) =======
+            const soundIcons = document.querySelectorAll('.sound1, .sound2');
+
+            soundIcons.forEach(icon => {
+                const soundFile = icon.classList.contains('sound2') ? "sound/hearing2-rasim.mp3" : "sound/hearing1-rasim.mp3";
+                const player = new Tone.Player(soundFile).toDestination();
+
+                // Universal unlock for mobile (iOS + Android browsers need user gesture first)
+                function unlockAudio() {
+                    if (Tone.context.state !== 'running') {
+                        Tone.start();
+                    }
+                }
+                document.addEventListener('click', unlockAudio, { once: true });
+                document.addEventListener('touchstart', unlockAudio, { once: true });
+
+                // Detect hover support
+                const canHover = window.matchMedia('(hover: hover)').matches;
+
+                if (canHover) {
+                    // Desktop hover
+                    icon.addEventListener('mouseenter', () => {
+                        player.start();
+                    });
+                } else {
+                    // Mobile tap
+                    icon.addEventListener('touchstart', () => {
+                        player.start();
+                    });
+                    icon.addEventListener('click', () => {
+                        player.start();
+                    });
+                }
+            });
+
+
+            // ======= VIDEO on hover/tap → play → disappear when done =======
+            const videoIcons = document.querySelectorAll('.video1');
+
+            videoIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', showAndPlayVideo);
+                icon.addEventListener('click', showAndPlayVideo); // Mobile support
+
+                function showAndPlayVideo() {
+                    // Create video element
+                    const video = document.createElement('video');
+                    video.src = "video/sample.mp4"; // Change this to your video path
+                    video.style.position = "fixed";
+                    video.style.top = "20px";
+                    video.style.right = "20px";
+                    video.style.maxWidth = "300px";
+                    video.style.zIndex = "9999";
+                    video.autoplay = true;
+                    video.muted = false;
+                    video.playsInline = true; // important for mobile
+                    document.body.appendChild(video);
+
+                    video.addEventListener('ended', () => {
+                        video.remove();
+                    });
+                }
+            });
+
 
             // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
             document.addEventListener('click', () => {
                 Tone.start();
 
                 const tones = [
-                    'E3', // Meg Miller
-                    'G3', // Jalen Adams
-                    'F3', // Rasim Bayramov
-                    'D3', // Kai Chu Chuang
-                    'C3', // Molly Garrett
-                    'B3', // Tariye George-Phillips
-                    'F3', // Aya Khalife
-                    'G3', // Bradley Sinanan
-                    'A3', // Quinn Standley
-                    'D#3', // Weitong Sun
-                    'G3', // Taehee
-                    'F3', // Yuan Xin
-                    'C3',  // Yangyang Zhang
+                    'E3', 'G3', 'F3', 'D3', 'C3', 'B3', 'F3', 'G3', 'A3', 'D#3', 'G3', 'F3', 'C3'
                 ];
 
                 const notes = document.querySelectorAll('.note');
@@ -362,10 +406,11 @@
                 notes.forEach((note, index) => {
                     note.addEventListener('mouseenter', () => {
                         const synth = new Tone.Synth().toDestination();
-                        synth.triggerAttackRelease(tones[index], '8n');
+                        synth.triggerAttackRelease(tones[index % tones.length], '8n');
                     });
                 });
             });
+
 
             // ======= CURSOR TRACE =======
             document.addEventListener('mousemove', (e) => {
@@ -379,6 +424,7 @@
                     trace.remove();
                 }, 700);
             });
+
 
             // ======= HOVER IMAGE PREVIEW =======
             const hoverImages = document.querySelectorAll('.hover-image');
@@ -395,16 +441,16 @@
                 });
             });
 
-            // ======= FOOTNOTE SCROLL =======
+
+            // ======= FOOTNOTE SCROLL (optional usage) =======
             window.scrollToElement = function (selector) {
                 const element = document.querySelector(selector);
                 if (element) {
                     element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
                 }
             };
+
         });
-
-
 
     </script>
 
