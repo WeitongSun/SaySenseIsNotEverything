@@ -140,4 +140,17 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function() {
+  var originalTitle = $(".fade-title").text();
+
+  $(".container a").hover(function() {
+      // On hover in
+      var title = $(this).data("title");
+      $(".fade-title").text(title);
+  }, function() {
+      // On hover out
+      $(".fade-title").text(originalTitle);
+  });
+});
+
     
