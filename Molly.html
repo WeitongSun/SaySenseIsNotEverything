@@ -1,0 +1,496 @@
+<<<<<<< HEAD
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripted Content-Molly Garrett</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+    .right{
+        text-align: right;
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
+
+    }
+
+    @media screen and (min-width: 721px) {}
+
+    /* Style for the trace element */
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
+
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #f28e25;
+    }
+
+    .number1,
+    .number2 {
+        color: #f26830;
+    }
+
+    .number1:hover,
+    .number2:hover {
+        cursor: pointer;
+    }
+
+    .footnote1:hover,
+    .footnote2:hover {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>Scripted Content</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+        She opens her mouth and the choices float in hazy grey-green over her eyes. In the span of an inhale, she chooses one  —
+        <br><br>
+        <center>“Goodbye, CLASS! Great job today, everyone should be really proud of themselves. See you in the morning!”</center>
+        <br><br>
+        She watches as the little video squares file off screen, one by one. After this is a meeting with her principal. She glances up from her screen to stretch her eyes. The sun is still out, beating down on the concrete outside. Noises come from the other room as Hazel signs off from her day at preschool, and in a few moments she hears the shuffle of her daughter’s slippered feet, and her soft voice asking for a snack. Kelly waves her to the fridge, a finger to her lips while she opens the new meeting room on her computer screen. The pale face of her principal greets her for a few seconds before she opens her mouth to say hello. Her eyes unfocus and the options appear —
+        <br><br>
+        >> “Hi MR. HUDGENS! How was your day?”
+        <br><br>
+        >> “Hello there! Nice to see you today. How are you, MR. HUDGENS?”
+        <br><br>
+        >> “Good evening, MR. HUDGENS! I hope all is well!”
+        <br><br>
+        She chooses the second, and the unusual perkiness in her voice still surprises her, even weeks after the latest update. She gets through the call as quickly as possible — listening, reading between the lines of his responses, choosing her own. Why did this need to be a meeting again? Everyone knows class sizes keep getting larger. Sixty-seven children in her first grade class this year. Up to 73 this next fall, or so he says. 
+        <br><br>
+        Hazel toddles over to the table, pulling on the stretchy fabric of Kelly’s leggings. Kelly closes her computer; it’s the end of her work day and grey-green lights flash in the corners of her vision as the speech protocol automatically turns off. She blinks away the after-image they leave and reaches down to pull Hazel into her lap, half-eaten string cheese falling to the ground as Hazel reaches up to wrap her arms around Kelly’s neck. “Hi sweet girl” Kelly murmurs, pressing her face into the soft downy hair of Hazel’s head.
+         <span class="hover-image" data-img="/Molly_Smell.jpg"><img src="img/smell.png" width="20px"></span> 
+        She takes a deep breath, the smell of her daughter and the sound of her own voice relaxing her. “What did you learn today from Ms. Sandra?”
+        <br><br>
+        She half listens to Hazel’s babble — something about a new typing game with red buttons, a new song, and Roxy’s brother who ran naked across the screen and everybody laughed. She holds her tight against her as she listens, rocking her gently. Parts of her story sound like the preschool she remembers as a child. She asks Hazel to sing the song she learned, but she could only remember one line: “down comes the rain and washed the spidey out!”
+        <br><br>
+        —
+        <br><br>
+        Later, hours after Hazel was tucked into bed with a story and a lullabye, Dylan would get home from his outside job. He’d be grumpy, sweaty and dusty — his permanently sunburnt skin glowing against his uniform. He’d mumble something about a rough day, and head straight to the shower and then the couch; it’s been a long time since Kelly minded that they didn’t eat dinner together anymore. She takes this time to be by herself. The sun had set and the outside world had become slightly more bearable, cool enough that she can go outside for a half hour without too much risk. It was a good night for a walk.
+        <br><br>
+        The hot dry air hits her face and takes her breath away — it always feels like opening up a preheated oven. It’s hotter than expected today; January was usually more bearable. Her anxiety buzzes familiarly at the base of her skull. 
+        <br><br>
+        She walks through her neighborhood, listening to her favorite podcast — two women who yammer on about skincare. She likes looking in people’s windows when they leave the lights on at night. Her neighbor is growing flowers inside and they’re blooming this time of year – petunias are beautiful but so hard to grow now. In the next house over, a cat looks out at her from its perch on the back of a couch. When it’s dark like this, it’s almost like how she remembers it — warm summer nights playing outside with neighborhood girls as a child. One of the podcast hosts got a new serum, she’s telling the other how much she likes it. Kelly lets their voices wash over her. She used to listen to the news until she couldn’t take it anymore. She assuaged her guilt by telling herself it wasn’t anything she didn’t already know, and it’s not like she could do anything to fix it anyways… The economy had gotten better, Dylan had gotten a good job, her new health insurance had really helped during her pregnancy… She reminds herself of these things regularly, like a mantra. 
+        <br><br>
+        —
+        <br><br>
+        Kelly moves through each day with a regimented routine. Wake up before the sun rises, step outside and go for a walk. Come inside, give Dylan a quick kiss as he leaves for work, make coffee, wake Hazel up and get her ready for school. Have her sit on the back of the couch with her juice while Kelly braids her hair, one tight french braid to pull her wispy brown strands away from her face. Afterwards, she sits Hazel down in front of her tablet, waves to Ms. Sandra, then gets herself to work at the kitchen table. She opens up her classroom, grey-green lights flashing at the corners of her vision, and waits for her students videos to pop on screen.
+        <br><br>
+       >> “Hello, CLASS! Happy Friday! Please turn your cameras ON and get ready for storytime.”
+        <br><br>
+       >> “Good morning, CLASS! How is everyone doing this morning? Please use your listening ears and turn your cameras ON for storytime!”
+        <br><br>
+       >> “Happy Friday, CLASS! It’s a beautiful morning for learning. Everyone turn your cameras on and get ready for storytime!”
+        <br><br>
+        She sleepily chooses the second one, the listening ears is a good reminder for them in the morning. The rest of the day chugs on like normal, a series of speech choices that feel almost intuitive at this point. 
+        <br><br>
+        “Good listening, CLASS! Now it’s time for morning snack. Be sure to be back here in 15 minutes!”
+        <br><br>
+        Kelly takes this time to refill her thermos and check on Hazel, who is drawing on her tablet’s screen. She makes a mental note to praise her later when it’s uploaded to the photo frame on the fridge — her feelings were hurt the last time she forgot to notice. 
+        <br><br>
+        <center>“Great job, CLASS! Next it’s time for music. Everyone turn your microphones ON and get ready to sing along with me.”</center>
+        <br><br>
+        Music class is Kelly’s favorite. Although the firmware is activated, it still feels like singing when she opens her mouth and the lyrics flutter across her vocal cords. This time she chooses Itsy Bitsy Spider, thinking about Hazel and smiling to herself. 
+         <span class="sound1"><img src="img/sound.png" width="15px"></span>
+         Her work voice mixes unnaturally with her student’s warbling off-tune notes; she tries to tune herself out and focus on the beautiful imperfections and wrong words of their songs.
+        <br><br>
+        Her work day ends at 2:50pm, just like Hazel’s school day. Hazel pads in, Kelly cut up some apples for her snack. Hazel starts crying, she wants the apple whole.
+        <br><br> 
+        <center>“NO MAMA MY APPPPLEEEE”</center>
+        <br><br>
+        She’s overtired, Kelly thinks. Privately, she’s always been concerned about the effects on children as they interact with their teacher’s speech protocol all day; and besides, it’s hard for even adults to look at their screen that long. She’ll be surprised if Hazel makes it through dinner at all tonight.
+        <br><br>
+        <center>“It’s okay baby, see! Here’s another apple. I’ll eat the cut up one.”<span class="hover-image" data-img="img/Molly_Taste-01.jpg"><img src="img/taste.png" width="20px"></span></center>
+        <br><br>
+        —
+        <br><br>
+        The next morning, Kelly wakes up to red flashes in her eyes. Even half asleep, she knows what that means. She jerks up and grabs at her husband, still sleeping. She shakes him until his eyes open, meeting hers. She knows she must look panicked. <i>Did he see it too? The updates usually happen on Mondays, not Saturdays, and there wasn’t supposed to be another until next quarter…</i> She opens her mouth, and out of habit, chooses one:
+        <br><br>
+       <center>“Good morning, DYLAN! What a beautiful morning!”</center>
+        <br><br>
+        She barely hears the end of it, her stomach clenches and she runs to the bathroom, making it just before throwing up last night’s dinner into the toilet bowl.
+        <br><br>
+       >> “Oh wow, something must not be sitting right with me!”
+        <br><br>
+       >> “Ah, I’m really not feeling well. My stomach is feeling very sick.”
+        <br><br>
+       >> “DYLAN, I’m feeling nauseous. Can you bring me some medicine?”
+        <br><br>
+        She chooses the vaguest yet truest option and the voice, so much like her own but one octave too high, is like embers against her raw nerves. Her attention tunnels inward, and she half-hears Dylan’s work voice, an octave lower than his own, asking if she’d like a glass of water. She meets his eyes and sees only muted resignation in them, which makes her panic more. <i>Why isn’t he feeling what she’s feeling? Why is she the only one with the bodily reaction to reject, expel</i> — she opens her mouth to say exactly that and —
+        <br><br>
+        “How are you feeling today, DYLAN?”
+        <br><br>
+        She clenches her jaw shut. They look at each other across the bathroom, eyes locked. Her chest rises and falls faster than it should; he starts toward her like he might try to soothe her but she scrambles away, certain any touch will restart the nausea. 
+        <br><br>
+        <i>Oh god, this wasn’t supposed to happen, this wasn’t supposed to happen, the speech protocol was only for professional environments, not family, oh god, family —</i>
+        <br><br>
+        Kelly flies down the hall to Hazel’s room, flings open the door and picks up her sleeping child from her tangle of blankets — 
+        <br><br>
+        “Hello, Mama! I slept well!”
+        <br><br>
+        The voice, ringing high and clear without Hazel’s soft lisp, is the worst thing Kelly has ever heard. Panic pounds through her chest, her knees give out and she sinks to the floor, kneeling and clutching Hazel against her chest. Hazel keeps trying to talk to her.  
+        <br><br>
+        “Hello MAMA, good morning!” 
+        <br><br>
+        “Hello MAMA, good morning!” 
+        <br><br>
+        Tears start streaming down her face but she keeps opening her mouth to try again. 
+        <br><br>
+        “Hello, MAMA! What’s for breakfast?” 
+        <br><br>
+        “Hello, MAMA! I had bad dreams last night!”
+        <br><br>
+        “Hello, MAMA! I’m not feeling well.
+        <br><br>
+        Kelly smoothes the hair back from Hazel’s tear-sticky cheeks, and gently puts her fingers against her child’s lips, closing them. She makes low hums in her throat, something like a shush, trying to soothe her. She feels Dylan at her back in the doorway, and she knows the look on his face without turning around.  She opens her mouth to tell him to just leave if that’s how he really feels, but the world she knew spins in grey-green and so she closes her mouth again. Bile rises at the back of her throat. She keeps humming, this time the tune of Itsy Bitsy Spider, while Hazel sobs into her shoulder. At some point, she becomes aware of Dylan’s absence, and it’s a relief. 
+        <br><br>
+        Dylan, she knows, still believes it is temporary — a bold solution to jumpstart a new economy, or whatever they all kept saying in the speeches and campaigns. He brushed off her initial concern at the first firmware rollout, choosing to focus on the promises it offered. “This is just your anxiety — if it wasn’t safe, they wouldn’t make it! It’s really not so different from all our other tech… You’ve seen the news, the protests are out of control, those fricken idiots are destroying the city!” Those rants always ignited passion in his voice; he said it with such enthusiasm and confidence that Kelly had found herself agreeing with him at first. At the end of his rant, his voice would get tender, and he’d close it out by saying that he was just concerned about her and Hazel’s safety. Those words used to fill her with warmth and love; that sentiment used to make her feel protected. But recently, years later, when her anxiety had gotten louder and they’d started fighting regularly, she learned that all of her arguments and questions could never puncture the armor he’d made for himself. These were the people he’d blamed and the promises he’d believed. He wasn’t the type of man who could recognize when he was wrong. 
+        <br><br>
+        And now, sitting on the floor or her daughter’s bedroom, she wondered if he was still telling himself this. She didn’t think she’d be able to ask.
+        <br><br>
+        —
+        <br><br>
+        That night, it rained — the first rain they’ve had all year. Hazel had spent the rest of the day mute, pointing at what she wanted, and squeezing her stuffie to her chest. Her lip quivered whenever she opened her mouth, before quickly shutting it and blinking rapidly. Kelly had leashed down her rage in service of Hazel’s needs, trying to make the day as normal as possible for her — some playtime with her puzzle games, a movie, letting her mix the fruit salad they’d have for dinner. But now that the day was done and Hazel was asleep, the tether was wearing thin. 
+        <br><br>
+        Kelly walks out her backdoor, robotically going through her nighttime routine, and feels the rain against her skin.
+<!--         <span class="sound2"><img src="img/touch.png" width="15px"></span> -->
+        Her legs walk her around her neighborhood while her mind jumps from panic to terror to logistics back to panic. Had others received this update yet? Was her family one of the first? When did this become legal for children? How was this possible? How did anyone let this happen? How had she –
+        <br><br>
+        She turns the corner and crashes into someone — another woman out late walking in the rain.
+        <br><br>
+       <center> “Hello, KELLY! What a nice night for a walk!”</center>
+        <br><br>
+        The woman, dressed in a turquoise raincoat, black leggings and white thick-soled sneakers, smiles at her from under the deep hood of her coat.
+        <span class="hover-image" data-img="img/Molly_Sight-01.jpg"><img src="img/sight.png" width="20px"></span>
+        Kelly recognizes her as another mom from Hazel’s class, sometimes she’d see her for brief moments at sign-on. Kelly stares at her blankly and tries to clear her mind, unprepared for this sudden in-person social interaction. She opens her mouth to say something, but the woman suddenly reaches into her raincoat, pulling out a wrapped object, rectangular and hard. She presses it into Kelly’s hands. The woman meets her gaze, and holds it.
+        <br><br>
+        Kelly looks down pointedly at the object, bringing her eyebrows together in what she hopes conveys confusion, while keeping her jaw clenched. But the woman, lips pasted in a demure smile, says nothing. Beneath the smudged mascara on her upper lids, the woman’s brown eyes burn with the urgency of what she can’t say, and it pierces through the panic Kelly’s been floating in all day. 
+        <br><br>
+        She lets out the breath she doesn’t realize she’s been holding, and chooses the first option automatically.
+        <br><br>
+        <center>“Great running into you ANGELA! Have a nice night!”</center>
+        <br><br>
+        She takes the rest of her usual route home, tucking the strange package into her sweatshirt pocket. Once safely inside, she tears open the wrapping. It’s a paperback book. Kelly lets out a soft gasp, turning it over in her hands, running her fingers along the cracked spine. She’s only seen photos in the museum’s digital archives about paper pages… This one was for a manual for a microwave, so it had to be over 50 years old. The paper is curled and wavy from age and the rain that had seeped through its wrapping. She flips open the cover — <i>why had the woman given this to her? And how had she even gotten it in the first place?</i> Kelly leafs through the pages tenderly, scanning the ink-printed words.
+        <br><br>
+        The pages were stained with the brown remnants of past food drips, dirt and dust. The acid in the paper made the pages fragile and yellow. A pink stain catches her eye, small but bright, the color of beets. A single, perfect drop. And on the following page, another one just like the first. These stains seem fresh, too bright, too perfectly placed. Kelly’s brain leaps ahead, and she frantically thumbs through the manual, collecting the words highlighted by beet juice and repeating them in her brain, her mouth firmly shut. 
+        <br><br>
+        <i>
+        You
+        <br><br>
+        can
+        <br><br>
+        get 
+        <br><br>
+        out.
+        <br><br>
+        I 
+        <br><br>
+        know
+        <br><br>
+        how. 
+        </i>
+        <br><br><br><br>
+
+        <span class="note" style="color: #d8e038;">Molly Garrett</span>
+        <br><br>
+        <span class="note" style="color: #d8e038;">Molly Garrett (she/her) is a designer and animator from Kansas City, Missouri. Her work deals with language and politics — the absurd (and usually failing) nature of it. Before grad school she worked in progressive political communications professionally and made weird hand-drawn animations for fun. Her films have been shown at film festivals like Berlin Feminist Film Week, Melbourne Queer Film Festival, and Animation Block Party. She graduated from KCAI in 2015 with a BFA in Animation and Art History, and will graduate from Virginia Commonwealth University with an MFA in Graphic Design in May 2025.
+            <br><br></span>
+
+    </h3>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    // ======= SOUND1 (optional, safe check) =======
+    const sound1 = document.querySelector('.sound1');
+
+    // if (sound1) {
+    //     const player = new Tone.Player("sound/Molly_Sound.mp3").toDestination();
+    //     sound1.addEventListener('mouseenter', () => {
+    //         player.start();
+    //     });
+    // }
+
+    // if (sound2) {
+    //     const player = new Tone.Player("sound/Molly_Touch.mp3").toDestination();
+    //     sound1.addEventListener('mouseenter', () => {
+    //         player.start();
+    //     });
+    // }
+    // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
+    document.addEventListener('click', () => {
+        Tone.start();
+
+        const tones = [
+            'E3', // Meg Miller
+            'G3', // Jalen Adams
+            'F3', // Rasim Bayramov
+            'D3', // Kai Chu Chuang
+            'C3', // Molly Garrett
+            'B3', // Tariye George-Phillips
+            'F3', // Aya Khalife
+            'G3', // Bradley Sinanan
+            'A3', // Quinn Standley
+            'D#3', // Weitong Sun
+            'G3', // Taehee
+            'F3', // Yuan Xin
+            'C3',  // Yangyang Zhang
+        ];
+
+        const notes = document.querySelectorAll('.note');
+
+        notes.forEach((note, index) => {
+            note.addEventListener('mouseenter', () => {
+                const synth = new Tone.Synth().toDestination();
+                synth.triggerAttackRelease(tones[index], '8n');
+            });
+        });
+    });
+
+    // ======= CURSOR TRACE =======
+    document.addEventListener('mousemove', (e) => {
+        const trace = document.createElement('div');
+        trace.classList.add('cursor-trace');
+        trace.style.left = `${e.clientX}px`;
+        trace.style.top = `${e.clientY}px`;
+        document.body.appendChild(trace);
+
+        setTimeout(() => {
+            trace.remove();
+        }, 700);
+    });
+
+    // ======= HOVER IMAGE PREVIEW =======
+    const hoverImages = document.querySelectorAll('.hover-image');
+    const hoverPreview = document.getElementById('hoverPreview');
+
+    hoverImages.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            hoverPreview.src = item.getAttribute('data-img');
+            hoverPreview.style.display = 'block';
+        });
+
+        item.addEventListener('mouseleave', () => {
+            hoverPreview.style.display = 'none';
+        });
+    });
+
+    // ======= FOOTNOTE SCROLL =======
+    window.scrollToElement = function(selector) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }
+    };
+});
+
+
+
+    </script>
+
+</body>
+
+</html>
+=======
+>>>>>>> parent of f2d2787 (mg)
