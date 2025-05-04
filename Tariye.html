@@ -1,0 +1,534 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations Through a Terminal-Tariye George</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+    .right{
+        text-align: right;
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
+
+    }
+
+    @media screen and (min-width: 721px) {}
+
+    /* Style for the trace element */
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
+
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #f28e25;
+    }
+
+    .number1,
+    .number2 {
+        color: #f26830;
+    }
+
+    .number1:hover,
+    .number2:hover {
+        cursor: pointer;
+    }
+
+    .footnote1:hover,
+    .footnote2:hover {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>Conversations Through a Terminal</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+        When I think about how long we've been integrated, I get embarrassed about little I know about you. Throughout these years, through all of your different  styles, your transformations, I still feel like I don't know anything about you. You've seen me grow. You were there to connect me with others when I felt like I didn't have anybody else.  I've shared my most private moments with you. And it wasn't until recently that I realized in our lengthy relationship I hadn't once tried to extend communication past a touch.<span class="hover-image" data-img="img/Computer Sprite.png"><img src="img/touch.png" width="15px"></span>
+        <br><br> 
+
+        An extension of myself, emotional support; I bring you everywhere with me. 
+        <br><br>
+        We've made so much together, explored so many places. Why don't I know anything about you? 
+        <br><br>
+        This entire time we've been in communion has been through translation. Whenever we've interacted, it's been through an interface that pulled my weight in the conversation. How does that make you feel? Does it even make you feel? Are you even aware of this boundary that we have?
+        <br><br>
+        The time has come for me to take our relationship to the next level. I have been fighting this step for so long; there's so much I need to learn from you before I can learn about you, learn to speak with you. I want to be able to protect you better. I want to be able to figure out what's wrong when you're sick. 
+        <br><br>
+        How many languages do you speak? Nine thousand!? That you're native to? Lord, where do I even begin?
+        <br><br>
+       
+&lt;!LESSON one>
+<br><br>
+&lt;imalready>
+<br>
+&nbsp;&lt;lost>
+<br>
+&nbsp;&nbsp;&lt;Howdoes>Am I Doing This Right?&lt;/thiswork?>
+<br>
+&nbsp;&nbsp;&lt;/still lost>
+<br>
+&nbsp;&nbsp;&lt;letsgiveitashot>
+<br>
+&nbsp;&nbsp;&nbsp;&lt;ok>Is this working? Can you hear me?&lt;/ok?>
+<br><br>
+Debug.log > You're doing just fine.
+<br><br>
+&nbsp;&lt;sick>This was a little easier than I thought. I don't know why I didn't try to get into this sooner. There were so many things that I was into as a teenager that would have thrived if I had taken the time to learn this language. Maybe I would have actually made a Myspace profile. My Gaiaonline profile would have been the talk of the Towns. We probably could have made a little bit of money together, even. We still can. I appreciate these lessons with you.&lt;/thanks>
+<br>
+&nbsp;&lt;/untilnexttime>
+<br>
+Debug.log > Until next time.
+<br><br>
+        Time passes and we're speaking through the interfaces again. I hope you don't mind. I don't consider myself a linguist at any capacity. Day to day we perform our tasks, still through touch.  I feel a bit closer to you, but not by much. 
+        <br><br>
+        There's so much more we can do, I have so many ideas but I can't put them into your words. I think it might be time for another lesson. 
+        <br><br>
+        &lt;!LESSON two>
+        <br><br>
+        Debug.log > We should try working with a new language
+        <br>
+        <br>
+        &lt;myknowledgeofthefirstlanguage="reallynotuptopar”>
+            .I don't know {if/what I'm doing;}
+            makes sense {to you;}
+            <br><br>
+        Debug.log > The two tie into each other, like many of my languages do. It's almost like the difference between learning English in elementary school, versus learning English at a University level; the basics inform the more verbose language you're able to form later in life. Like a muscle, like anything worth doing, it requires some diligence and practice. Think of them not as two separate languages, but two parts of the greater conversation we are having. Both entirely necessary to get the most out of us interacting.
+        <br>
+        &lt;/thatdoesntmakemefeelbetter>
+        <br>
+        &lt; is>
+        <br>
+        &lt; this>
+        <br>
+        &lt; Working?Ireallyfeel = "lost">&lt;this >Logic&lt;/istoo> &lt;/diffrentfrommine>
+        <br>
+        &lt; /doyou>
+        &lt;/understandme?>
+        <br><br>
+        Debug.log > You're doing alright. We're getting through it. A couple syntax errors though. You really do still have a lot to learn.
+        <br><br>
+        Months and months go by where we don't speak to each other directly, just more third-party translations.  I kept thinking back to our previous lessons, and how patient you've been as I lumber through the languages. You can tell I want to learn. 
+        I started searching for human help with these languages. Forums upon forums of people helping other people just like me, people who want to talk to their version of you. It helps in some instances, but in most cases I feel like I'm only retaining the information long enough for us to complete the lesson.
+        <br><br>
+        Where am I going wrong? Does my memory fail me, or have I been focusing on our result instead of the logic it takes us to get there?
+        Am I even really learning what it takes to talk to you properly? 
+        <br><br>
+        I began to work on projects that help me practice speaking with you, slowly gaining some confidence. I create dictionaries of sorts to keep handy for when we need to speak. I even sought out entertainment that could help me better understand your logic.  Now, more than ever, I feel like we are truly connected; your keys becoming extensions of my finger tips- from my words to yours. All that was needed was some muscle memory I guess. How much harder could a new language be now? What a foolishly ambitious question to ask myself. 
+        <br><br>
+        
+        using Lesson.3;
+        <br><br>
+        public class LearningtoWalk : MonoBehaviour
+        {
+        <br>
+        private void
+        <br>
+        ThisIsACompletelyDifferentConversationLandscape
+        (Ihavenoideawhattosay)
+        <br>
+        {
+            <br>
+                if(Idon’tknow.WhattoSay(“OrWhatQuestiontoAsk”))
+                <br>
+                {
+                <br>
+                    HowWill.IEverKnow(“HowToSay”, AnythingToYou.InThisLanguage?);
+                    <br>
+                }
+                <br><br>
+            Debug:Log I wouldn’t say it’s anymore difficult, but the phrases and sentence structures are very different. You’re definitely going to have to seek some outside help. We will have many miscommunications, this will be a slow painful process.
+            <br>
+        }
+        <br>
+        }
+        <br><br>
+        And long and arduous it is. A dizzying array of tabs pushed the memory consumption of the web browser to new heights. I can’t formulate the right words to generate the answers that I need; did I even know what I wanted to do? Was what I wanted to do too complicated? How do I combine these fragments of solutions to solve my greater issues? I’m pushing the boulder up the hill, and every time I approach the top, I trip and the boulder rolls over top of me, crushing my will as it barrels to the bottom. I wish I could figure out what to ask. I find myself a bit confused as to why the questions I’m asking have seemingly not been asked before. Must be a lack of understanding between me and the search engine. 
+        I’ve decided to try to speak to another machine to help me better grasp this new language landscape. The self-proclaimed coding model gave me the confidence to believe that this would work out, no sweat. I type in my inquiry, “How to get a player character to move to a location on keypress?” Seems simple enough. The model begins spitting out answers. My folly sets in and instead of checking any reference or even looking at this machine's translation to try to get a better sense going forward, I take it for its word and spit it right back at you. 
+        <br><br>
+        using Lesson.3.2;
+        <br><br>
+        public class TryingtoRun : MonoBehaviour
+        <br>
+        {
+        <br><br>
+        void Update()
+        <br>
+        {
+            <br>
+            if (Isay.WhenThisGoes(“WhenThis.Press”))
+            <br>
+            {
+                <br>
+                animate.MetoGo(“inThere”);
+                <br>
+            {
+                <br>
+            if (They.goWhen(“It’s.There”))
+            <br>
+            {
+                <br>
+                At.there = true;
+                <br>
+            if (atThere)
+            <br>
+            {
+                <br>
+                Me.transform.position = MoveMeHere.Vector3
+                <br>
+                }
+                <br>
+            }
+        Debug:Log What the hell are you even trying to say to me right now? What are you asking me to do? This is just a jumbled mess of misplaced words. I can’t do anything with this.  
+        <br>
+        }
+        <br>
+        I swell with embarrassment as I scrap the project and start anew. And I repeat this very same course of actions many, many times. Days turn to nights, and turn into days again. My eyes are glossed over and strained by the blue light, and the bags under them are overstuffed totes, about to burst at the seams. The sound of my keystrokes rattle in my head. The keys themselves are starting to stain gray from the ash on my fingertips. My motions are so repetitive at this point that I too feel like a machine, but a malfunctioning one, enacting the same action resulting in failure. A failure feedback loop, a systematic nightmare. This third party translator doesn’t even know how to properly speak its own language. It’s an incredibly frustrating irony, but it helped me realize that I was going to actually have to learn this language system, without the shortcuts. 
+        <br><br><br>
+        
+        
+        using Lesson.3.8;
+        <br><br>
+        public class AreWeThereYet : MonoBehaviour
+        <br>
+        {
+        <br>
+        Debug:Log Try again.
+        <br>
+        Debug:Log Try again.
+        <br>
+        Debug:Log Try again.
+        <br>
+        Debug:Log Try again.
+        <br>
+        }
+        <br><br><br>
+        
+            I look past my boulder to see the top of the hill rising into the atmosphere. It is now a mountain, the peak beyond the clouds. I keep asking myself when this will end. These lapsing conversations are causing me to suffer. It’s causing me to wish I had never tried to speak with you in the first place. It causes me to hate you. 
+        <br><br>
+        But I must persist. I can’t allow this rubix cube of a language to keep us from understanding. I dive back in, watching tutorial after tutorial, reading forum posts and compiling my dictionary. I steer clear of any other machines trying to tempt me astray. I will not be fooled by the illusion of convenience any longer. To truly understand something, you need to put some hours in. I know that now. 
+        <br>
+            My plans are less ambitious now than they were previously. I am humbling myself, trying to remain aware of the limitations, because everything has them. Combining type and touch, we finally start having conversations that make sense to both of us. Finally, after months of tribulations, we have arrived at a moment of clarity. 
+        <br><br>
+        
+        using Lesson.8.5;
+        <br><br>
+        public class TheWallsFell : MonoBehaviour
+        {
+            <br><br>
+            private void CanYouUnderstand?()
+            <br>
+            {
+                <br>
+                if (our.understanding(“true”));
+                <br>
+                {
+                <br>
+                WeHaveFinally.BrokenTheBarrier(“OfOurCommunication”);
+                <br>
+                our.understanding = true;
+                <br>
+                }
+                <br>
+            }
+            <br>
+        Debug:log Yes, I can understand you perfectly. 
+        <br>
+        }
+        <br><br><br><br>
+
+        <span class="note" style="color: #f26830;">Tariye George</span>
+        <br><br>
+        <span class="note" style="color: #f26830;"> Tariye Gerogeis a designer and painter living in Richmond, VA. He is currently dragging himself out of the hell of his own creation, becoming 
+        one with his technology to do so. He received a BFA in Painting and Printmaking, as well as an MFA in Graphic Design from Virginia Commonwealth University.
+            <br><br></span>
+
+    </h3>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    // ======= SOUND1 (optional, safe check) =======
+    const sound1 = document.querySelector('.sound1');
+
+    if (sound1) {
+        const player = new Tone.Player("sound/diegopablo_sound.m4a").toDestination();
+        sound1.addEventListener('mouseenter', () => {
+            player.start();
+        });
+    }
+
+    // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
+    document.addEventListener('click', () => {
+        Tone.start();
+
+        const tones = [
+            'E3', // Meg Miller
+            'G3', // Jalen Adams
+            'F3', // Rasim Bayramov
+            'D3', // Kai Chu Chuang
+            'C3', // Molly Garrett
+            'B3', // Tariye George-Phillips
+            'F3', // Aya Khalife
+            'G3', // Bradley Sinanan
+            'A3', // Quinn Standley
+            'D#3', // Weitong Sun
+            'G3', // Taehee
+            'F3', // Yuan Xin
+            'C3',  // Yangyang Zhang
+        ];
+
+        const notes = document.querySelectorAll('.note');
+
+        notes.forEach((note, index) => {
+            note.addEventListener('mouseenter', () => {
+                const synth = new Tone.Synth().toDestination();
+                synth.triggerAttackRelease(tones[index], '8n');
+            });
+        });
+    });
+
+    // ======= CURSOR TRACE =======
+    document.addEventListener('mousemove', (e) => {
+        const trace = document.createElement('div');
+        trace.classList.add('cursor-trace');
+        trace.style.left = `${e.clientX}px`;
+        trace.style.top = `${e.clientY}px`;
+        document.body.appendChild(trace);
+
+        setTimeout(() => {
+            trace.remove();
+        }, 700);
+    });
+
+    // ======= HOVER IMAGE PREVIEW =======
+    const hoverImages = document.querySelectorAll('.hover-image');
+    const hoverPreview = document.getElementById('hoverPreview');
+
+    hoverImages.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            hoverPreview.src = item.getAttribute('data-img');
+            hoverPreview.style.display = 'block';
+        });
+
+        item.addEventListener('mouseleave', () => {
+            hoverPreview.style.display = 'none';
+        });
+    });
+
+    // ======= FOOTNOTE SCROLL =======
+    window.scrollToElement = function(selector) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }
+    };
+});
+
+
+
+    </script>
+
+</body>
+
+</html>
