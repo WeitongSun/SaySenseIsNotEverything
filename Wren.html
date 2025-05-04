@@ -1,0 +1,422 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Waiting Room-Wren Tiffany</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.26/Tone.js"></script>
+    <link rel="icon" href="img/star.gif" type="image/gif" />
+</head>
+<style>
+    @font-face {
+        font-family: "Myriad";
+        src: url("fonts/MYRIADPRO-REGULAR.OTF");
+    }
+
+    body {
+        background-color: #f1eed4;
+        display: flex;
+        flex-direction: column;
+        margin: 24px;
+
+        cursor: none;
+        /* overflow: hidden; */
+    }
+    .right{
+        text-align: right;
+    }
+
+
+    h1 {
+        width: 90%;
+        position: relative;
+        color: #000000;
+        font-size: 60px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-weight: 100;
+        line-height: 100px;
+    }
+
+    h2 {
+        position: relative;
+        margin-top: -40px;
+        /* font-family: Arial, Helvetica, sans-serif; */
+        font-size: 25px;
+        font-weight: 100;
+        margin-bottom: 70px;
+    }
+
+
+    h3 {
+        width: 50%;
+        position: relative;
+        color: #000000;
+        font-size: 18px;
+        /* font-family: "Nanum Myeongjo", serif; */
+        font-weight: 100;
+        line-height: 24px;
+    }
+
+    .tilt-video {
+        position: relative;
+        object-fit: cover;
+        border-radius: 5px;
+        background-size: cover;
+        margin-top: 70px;
+        max-width: 100vw;
+        height: 300px;
+        /* filter: drop-shadow(0 0 15px #ffdbba); */
+    }
+
+    button {
+        background-color: transparent;
+        position: absolute;
+        border: none;
+        cursor: default;
+        font-style: italic;
+        justify-content: center;
+        color: #645e53;
+    }
+
+    button:hover {
+        cursor: pointer;
+        font-style: italic;
+    }
+
+    .back_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        text-transform: uppercase;
+        text-decoration: underline;
+        color: #ff9129;
+    }
+
+    .img-container {
+        position: fixed;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        z-index: -1;
+
+    }
+
+    /* Egg rotation above the “about” element @Weitong*/
+    .back_btn img {
+        width: 55px;
+        height: 40px;
+        animation: rotation 6s infinite linear;
+        filter: drop-shadow(0px 0px 8px #fac390);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (max-width: 720px) {
+        body {
+            margin: 10px;
+            gap: 10px;
+        }
+
+        h1 {
+            width: 100%;
+            font-size: 30px;
+            line-height: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            /* font-family: Arial, Helvetica, sans-serif; */
+            font-size: 20px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            width: 100%;
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            position: relative;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back_btn {
+            font-size: 12px;
+        }
+
+        .back_btn img {
+            width: 20px;
+            height: 15px;
+            animation: rotation 6s infinite linear;
+            filter: drop-shadow(0px 0px 8px #fac390);
+        }
+
+        .tilt-video {
+            position: relative;
+            object-fit: cover;
+            border-radius: 5px;
+            background-size: cover;
+            margin-top: 10px;
+            max-width: 100vw;
+            height: 160px;
+            /* filter: drop-shadow(0 0 15px #ffdbba); */
+        }
+
+    }
+
+    @media screen and (min-width: 721px) {}
+
+    /* Style for the trace element */
+    .cursor-trace {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: rgba(169, 11, 11, 0.15);
+        /* Soft shadow dot */
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fadeOut 0.7s forwards;
+        z-index: 9999;
+    }
+
+    /* Fading animation */
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: scale(2);
+        }
+    }
+
+    .sound1:hover {
+        color: yellow;
+        cursor: pointer;
+    }
+
+    a {
+        color: #f28e25;
+    }
+
+    .number1,
+    .number2 {
+        color: #f26830;
+    }
+
+    .number1:hover,
+    .number2:hover {
+        cursor: pointer;
+    }
+
+    .footnote1:hover,
+    .footnote2:hover {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <button type="button" onclick="window.location.href = 'index.html';">
+        <div class="menu" style="text-decoration: underline;">
+            <!-- <img src="img/Web_Egg_Motif_08.png" alt="Rotating Egg"> -->
+            <p>back to index</p>
+        </div>
+        <div class="img-container">
+            <!-- <img src="assets/circle.png"> -->
+            <img id="hoverPreview" src=""
+                style="display:none; position:fixed; top:20px; right:20px; max-width:300px; z-index:999;">
+        </div>
+    </button>
+
+    <!-- <video preload muted loop autoplay class="tilt-video" src="./img/shimmer-1.mp4"></video> -->
+
+    <h1>The Waiting Room</h1>
+
+    <!-- <h2><span class="note" style="color: #9a82e4;">Meg Miller</span></h2> -->
+
+    <h3>
+       
+        I sank deep into the poorly re-upholstered chair. Large staples poking through the woven fabric, the misshapen metal marked up my wrists as I gripped the armrests. The TV was on mute. An unattended child stuck his head into the middle of a colorful, wooden bead maze. Somebody was messing with the radio, I couldn't quite make out what they were playing. The nearby highway drowned out the administrative chatter and elderly sniffles. I took out my phone to see if you had texted.
+Overly drawn out confessions are sadomasochistic, the way you and I fought with each other. Lying to ourselves became like sonic warfare, a parallel fantasy that had begun to delude us into thinking we moved as one. It became hard to imagine staying together.
+You, routinely redlining my unsent letters, me, heart-reacting ‘made it home’ texts; You became my shield from the world, helping me escape the nightmare of authentic intimacy.
+Next to the aquarium that was overdue for a cleaning, I held my breath for you. With one last chance to say goodbye, to plead your case, to pick me up and bring me back to comfort and safety. I kept the waterworks to a minimum, I didn’t want to make a scene. I plugged in my headphones and listened to the playlists that got me here, next to the faded Seventeen magazines. 
+Without you by my side, I could see the once-clear path begin to break and crumble. My femininity hemorrhaging from years being whipped into submission.
+I began to picture my new life faintly in the distance,
+a bleeding body speeding recklessly into traffic, 
+just out of the shop from repairs.
+You always let fear decide my fate; 
+Road rules controlled my existence.
+We stood firmly at the Crossroads of pleasure and pain, never staying too long, never long enough to embrace the pain of pleasure, the pleasure of pain. I felt your grip loosen, my skin regained its color.
+I look to the left, I look to the right. There're hands that grab me on every side. 
+Having spent many years under your thumb, non-existing in a limbo of my own creation, I understood losing control, or the absence of being. If where there is joy there is sorrow, we would historically wash ourselves of this dichotomy all together, as a sort of battle strategy. 
+A nurse called for my paperwork.
+For the first part of our twenties, we spent many bickering nights in. Many sobering mornings after unfortunate binges, many walks home thinking about Old Friends. Those early years together felt terminal. It was hard to imagine growing old with you. How terribly strange to be seventy.
+We lived in-between life and death, some kind of third place reserved for addicts, trauma victims, and closeted homo-transexuals – as some combination of them all, it’s probably not surprising the ways in which we approached our flesh, or at least, our methods in survival (with a body). Our affair was sick, it became hard to stay, but I kept asking for more. I felt safe in the discomfort.
+We always left our guard up.
+We didn’t let people in, at least not in the ways we needed.
+I began to dismiss my needs as you fed my parasites.
+The more time we spent in this purgatory, the more I fell deeper and faster towards my own demise, disappearing into your wavy locks and floral bedsheets. Our life was half-lived, our body, half-explored, our story, half-written.
+In this waiting room, I began the grieving process. 
+You looked at me, in a reflection next to the bathroom sink, just like a wounded deer minutes before getting hit, we turned into an accident they couldn't look away from. The walls laughed at my display of inner conflict, I don’t blame them. This old life was coming to an end and the sight wasn't pretty. A collective rubbernecking on this mortal highway.
+I always felt like I needed more time with you. You were easy, those soft cheeks…sometimes I miss being able to forget to shower, our life was simple. I wrote stories of the unspoken at night in my notes app, because the silence was otherwise deafening. We tended to make compromises, we always played to our strengths, we hid our cards under the table, I’d cheat you before you could cheat me.
+The office-line rings, shaking us from our nostalgic daze, lingering on the inevitability of phantom sensations. When the void was our place of comfort, you warned that I might get lost while healing. I ignored your warning signs, I took my own directions for once.
+I contemplated my purchase, a new home away from home, away from home, away from home, away from you. Maybe a rebirth, or a little death. I felt a prick, or a kiss.
+Memories flashed across my mind like a toy View-Master. They didn’t blend from one into the next, they existed in disembodied fragments. It was easy to sew together narratives, Frankenstein-ing throughlines between your scraps and patches. You never let me see the whole picture, I was tired of zooming in closer. Starting over had become a cyclical habit, like when I heard a lyric too many times and it would eventually lose its meaning. Click, click, click, click. I was stuck in this demented roundabout, shuffle, repeat, shuffle, repeat.
+I signed your name, from Both Sides Now. I really don’t know life at all.
+As we started to slip away, I thought of future lovers and a bed without you taking up space. I started to hear blended voices, as if they were all in conversation with each other. Every potential encounter comes with it, the chance to try something new. Your body was easy for them to touch, mine will come with new, undiscovered bumps. This solitude with you was safer, a predetermined route, a short-cut to the grave that was clear, underlined, and highlighted, with an arrow leading me from one bed to another. Lost in that moment, I closed my eyes feeling the ecstasy of finally sleeping alone.
+They wheeled us in, I stared into the fluorescents.
+I embraced the paralysis.
+I slipped into the oblivion of living with my decisions.  
+
+I opened my eyes, it felt like a dream. I was naked sitting on the carpeted stairs of our childhood home, commiserating with the dust particles dancing in the morning sunlight. 
+The AC kicked on and I reached for a blanket that was draped on top of the couch. I was cold, I felt exposed.
+
+I walked up to the second floor, wrapped in the scent of lavender detergent and cat hair. 
+I opened the door to your old bedroom, only to find a blue, clouded sky, no ceiling or floors like one would expect, just an endless horizon.
+
+I stepped inside and onto the cotton path, it felt like wet sand. 
+
+I laid down to rest as my knees buckled, the door slammed shut. This place was familiar and bright, blinding and quiet.
+
+Hours passed by, the minutes moved slowly.
+
+I began to see the stars as I was lifted closer and closer to the edge. You were nowhere to be found, but I sensed your presence.
+
+On the other side, something seemed different, like living on the other side of a mirror.
+
+The world began to fade away, I lost track of time. I was partially awake, but I still felt groggy. Propped up in a car, I was in some pain, but mostly at ease with my choices. I started to regain my footing. I embraced the inevitable storm. As the rain began to pour, I finally wept a good weep like I never had before. My mind was still in those clouds.
+
+
+I missed our mother.
+
+My head is under her swimsuit skirt, 
+she’s letting you win at Marco Polo. 
+
+
+With sore shoulders and eyes closed tight, I held onto my limbs like they might be taken away from me as I finally came to, I pinched this new body to make sure that I was finally back in reality. 
+
+
+I cried again while looking at my incisions for the first time.
+I fought away demons as the bandages began to wither.
+I was itchy and damp and the compression was tight, 
+It was getting harder to breathe as you gave up the will to stay; I was choking on still water, and the need to be cared for.
+
+I’m in the shower now, listening to your favorite songs,
+the ones you used to lull me to sleep.
+The lines on my skin look different now, my finger traced these lines I never could have ever imagined;
+Newly painted, but somehow still you.
+
+Now resting and healing, from time spent in a body under stress, I think some gentleness has been earned. 
+I savor my time left to recover.
+
+With my senses beginning to shift and change in transition,
+you still bring to the surface those feelings not yet forgotten. 
+The muscle memory I had grown close to, your doubts began to double onto themselves, mutating and adhering to my bones like a poisonous algae. 
+It's hard to forget your sinister gaze. 
+I sometimes long for our old fights, the terminal battle for dominance that kept me driving through flooded streets.
+
+
+
+        <span class="note" style="color: #f89b64;">Wren Tiffany</span>
+        <br><br>
+        <span class="note" style="color: #f89b64;">Tyna Ontko’s practice positions facets of speculative futures, present-day-truth-telling, and the everyday construction of histories among one another in the form of sculptural assemblage. An artist and aspiring writer, she hails from the Kitsap Peninsula of western Washington state, an area which influences her continued interest in handicraft futurism, rural myth-making, and the moments where the archive gives way to the collection gives way to the hoard. Tyna is two weeks away from graduating with an MFA in Sculpture + Extended Media from Virginia Commonwealth University.
+            <br><br></span>
+
+    </h3>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    // ======= SOUND1 (optional, safe check) =======
+    const sound1 = document.querySelector('.sound1');
+
+    if (sound1) {
+        const player = new Tone.Player("sound/diegopablo_sound.m4a").toDestination();
+        sound1.addEventListener('mouseenter', () => {
+            player.start();
+        });
+    }
+
+    // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
+    document.addEventListener('click', () => {
+        Tone.start();
+
+        const tones = [
+            'E3', // Meg Miller
+            'G3', // Jalen Adams
+            'F3', // Rasim Bayramov
+            'D3', // Kai Chu Chuang
+            'C3', // Molly Garrett
+            'B3', // Tariye George-Phillips
+            'F3', // Aya Khalife
+            'G3', // Bradley Sinanan
+            'A3', // Quinn Standley
+            'D#3', // Weitong Sun
+            'G3', // Taehee
+            'F3', // Yuan Xin
+            'C3',  // Yangyang Zhang
+        ];
+
+        const notes = document.querySelectorAll('.note');
+
+        notes.forEach((note, index) => {
+            note.addEventListener('mouseenter', () => {
+                const synth = new Tone.Synth().toDestination();
+                synth.triggerAttackRelease(tones[index], '8n');
+            });
+        });
+    });
+
+    // ======= CURSOR TRACE =======
+    document.addEventListener('mousemove', (e) => {
+        const trace = document.createElement('div');
+        trace.classList.add('cursor-trace');
+        trace.style.left = `${e.clientX}px`;
+        trace.style.top = `${e.clientY}px`;
+        document.body.appendChild(trace);
+
+        setTimeout(() => {
+            trace.remove();
+        }, 700);
+    });
+
+    // ======= HOVER IMAGE PREVIEW =======
+    const hoverImages = document.querySelectorAll('.hover-image');
+    const hoverPreview = document.getElementById('hoverPreview');
+
+    hoverImages.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            hoverPreview.src = item.getAttribute('data-img');
+            hoverPreview.style.display = 'block';
+        });
+
+        item.addEventListener('mouseleave', () => {
+            hoverPreview.style.display = 'none';
+        });
+    });
+
+    // ======= FOOTNOTE SCROLL =======
+    window.scrollToElement = function(selector) {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+        }
+    };
+});
+
+
+
+    </script>
+
+</body>
+
+</html>
