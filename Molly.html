@@ -355,7 +355,7 @@
         That night, it rained — the first rain they’ve had all year. Hazel had spent the rest of the day mute, pointing at what she wanted, and squeezing her stuffie to her chest. Her lip quivered whenever she opened her mouth, before quickly shutting it and blinking rapidly. Kelly had leashed down her rage in service of Hazel’s needs, trying to make the day as normal as possible for her — some playtime with her puzzle games, a movie, letting her mix the fruit salad they’d have for dinner. But now that the day was done and Hazel was asleep, the tether was wearing thin. 
         <br><br>
         Kelly walks out her backdoor, robotically going through her nighttime routine, and feels the rain against her skin.
-        <span class="sound2"><img src="img/touch.png" width="15px"></span>
+<!--         <span class="sound2"><img src="img/touch.png" width="15px"></span> -->
         Her legs walk her around her neighborhood while her mind jumps from panic to terror to logistics back to panic. Had others received this update yet? Was her family one of the first? When did this become legal for children? How was this possible? How did anyone let this happen? How had she –
         <br><br>
         She turns the corner and crashes into someone — another woman out late walking in the rain.
@@ -404,19 +404,19 @@
     // ======= SOUND1 (optional, safe check) =======
     const sound1 = document.querySelector('.sound1');
 
-    if (sound1) {
-        const player = new Tone.Player("sound/Molly_Sound.mp3").toDestination();
-        sound1.addEventListener('mouseenter', () => {
-            player.start();
-        });
-    }
+    // if (sound1) {
+    //     const player = new Tone.Player("sound/Molly_Sound.mp3").toDestination();
+    //     sound1.addEventListener('mouseenter', () => {
+    //         player.start();
+    //     });
+    // }
 
-    if (sound2) {
-        const player = new Tone.Player("sound/Molly_Touch.mp3").toDestination();
-        sound1.addEventListener('mouseenter', () => {
-            player.start();
-        });
-    }
+    // if (sound2) {
+    //     const player = new Tone.Player("sound/Molly_Touch.mp3").toDestination();
+    //     sound1.addEventListener('mouseenter', () => {
+    //         player.start();
+    //     });
+    // }
     // ======= CLICK TO START Tone.js Synth Notes (for .note spans) =======
     document.addEventListener('click', () => {
         Tone.start();
@@ -491,3 +491,4 @@
 </body>
 
 </html>
+
